@@ -7,15 +7,23 @@ import { Header } from './Components/Header';
 function App() {
   const [inputName, setInputName] = useState('')
   const [openFilter, setOpenFilter] = useState(false)
+  const [category, setCategory] = useState('')
 
-  const filterArray = inputName ? games.filter(el => el.name.includes(inputName)) : games
+  const filterArray = games.filter(el => el.name.toLowerCase().includes(inputName.toLowerCase()) && el.category.includes(category))
 
   const handleInput = (text) => {
     setInputName(text)
   }
 
-  const handleOpen = () =>{
+  const handleOpen = () => {
     setOpenFilter(!openFilter)
+  }
+
+  const handleChandeCategory = (changetcategory) => {
+    if(changetcategory === category){
+      setCategory('')
+    }else
+    setCategory(changetcategory)
   }
 
   return (
@@ -23,8 +31,8 @@ function App() {
       <Header handleInput={handleInput} handleOpen={handleOpen} />
       {openFilter && (
         <div className='filter'>
-          <div className='active'>Шутер от 1 лица</div>
-          <div>Моба</div>
+          <div onClick={() => handleChandeCategory('1-person-shooter')} className={category === '1-person-shooter' && 'active'}>Шутер от 1 лица</div>
+          <div onClick={() => handleChandeCategory('moba')} className={category === 'moba' && 'active'}>Моба</div>
         </div>)}
       <div className='cardsbox'>
         {filterArray.map((el) => (
