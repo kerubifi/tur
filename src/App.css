@@ -1,0 +1,18 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: grey;
+    height: 50px;
+    color: #fff;
+    align-items: center;
+}
+.cardsbox{
+    display: flex;
+}
+.cards{
+    width: 200px;
+    box-shadow: 4px 4px 4px 4px grey;
+    margin: 20px;
+    padding: 5px;
+}
