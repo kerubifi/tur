@@ -17,3 +17,20 @@
     margin: 20px;
     padding: 5px;
 }
+.filter{
+    box-shadow: 4px 4px 4px 4px darkgrey;
+    width: 100px;
+    height: 100%;
+    position: absolute;
+    background: grey;
+    opacity: 0.9;
+    padding: 10px;
+}
+
+.filter div{
+    margin: 5px;
+}
+
+.filter div:hover, .active{
+    background-color: darkgray;
+}
