@@ -9,9 +9,10 @@
 }
 .cardsbox{
     display: flex;
+    flex-wrap: wrap
 }
 .cards{
-    width: 200px;
+    width: 100px;
     box-shadow: 4px 4px 4px 4px grey;
     margin: 20px;
     padding: 5px;
