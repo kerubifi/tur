@@ -34,3 +34,8 @@
 .filter div:hover, .active{
     background-color: darkgray;
 }
+
+.izflex{
+    display: flex;
+    justify-content: space-between;
+}
