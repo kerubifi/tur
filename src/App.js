@@ -2,9 +2,10 @@
 import { useState } from 'react';
 import './App.css';
 import { games } from './Components/Games';
+import { Main } from './Components/Pages/main';
+import { Route, Routes } from 'react-router-dom';
+import { Favorite } from './Components/Pages/Favorite';
 import { Header } from './Components/Header';
-import { Filter } from './Components/Filter';
-import { Card } from './Components/Card';
 
 
 function App() {
@@ -12,6 +13,8 @@ function App() {
   const [openFilter, setOpenFilter] = useState(false)
   const [category, setCategory] = useState('')
   const [favourites, setFavourites] = useState([])
+
+  const FavoriteCards = games.filter(games => favourites.includes(games.id))
 
   const filterArray = games.filter(el => el.name.toLowerCase().includes(inputName.toLowerCase()) && el.category.includes(category))
 
@@ -37,23 +40,21 @@ function App() {
   return (
     <div>
       <Header handleInput={handleInput} handleOpen={handleOpen} />
-      {openFilter && <Filter handleChandeCategory={handleChandeCategory} category={category} />}
-      <div className='cardsbox'>
-        {filterArray.map((el) => (
-          <Card
-            ChangeFavourites={ChangeFavourites}
-            favourites={favourites}
-            id={el.id}
-            key={el.id}
-            name={el.name}
-            category={el.category}
-            groupse={el.groupse}
-            peopleInGroup={el.peopleInGroupe}
-            prize={el.prize}
-            img={el.img}
-            alt={el.alt} />
-        ))}
-      </div>
+      <Routes>
+        <Route path="/"
+          element={
+            <Main
+              handleChandeCategory={handleChandeCategory}
+              ChangeFavourites={ChangeFavourites}
+              favourites={favourites}
+              filterArray={filterArray}
+              category={category}
+              openFilter={openFilter}
+            />
+          }
+        />
+        <Route path="/favorite" element={<Favorite FavoriteCards={FavoriteCards} />} />
+      </Routes>
     </div>
   );
 }
