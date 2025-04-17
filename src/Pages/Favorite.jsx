@@ -1,4 +1,4 @@
-import { Card } from "../Card"
+import { Card } from "../Components/Card"
 
 export const Favorite = ({ FavoriteCards }) => {
     return (
@@ -16,6 +16,7 @@ export const Favorite = ({ FavoriteCards }) => {
                             prize={el.prize}
                             img={el.img}
                             alt={el.alt} />
+                            
                     )) : <p>no</p>}
             </div>
         </div>

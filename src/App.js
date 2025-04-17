@@ -1,10 +1,10 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
-import { games } from './Components/Games';
-import { Main } from './Components/Pages/main';
+
+import { Main } from './Pages/main';
 import { Route, Routes } from 'react-router-dom';
-import { Favorite } from './Components/Pages/Favorite';
+import { Favorite } from './Pages/Favorite';
 import { Header } from './Components/Header';
 
 
@@ -13,10 +13,20 @@ function App() {
   const [openFilter, setOpenFilter] = useState(false)
   const [category, setCategory] = useState('')
   const [favourites, setFavourites] = useState([])
+  const [turnir, setturnir] = useState([])
 
-  const FavoriteCards = games.filter(games => favourites.includes(games.id))
+  useEffect(() => {
+    fetch("http://localhost:5000/turnirs")
+      .then((response) => response.json())
+      .then((result) => {
+          setturnir(result)
+      })
+      .catch((error) => console.log(error))
+}, [])
 
-  const filterArray = games.filter(el => el.name.toLowerCase().includes(inputName.toLowerCase()) && el.category.includes(category))
+  const FavoriteCards = turnir.filter(turnir => favourites.includes(turnir.id))
+
+  const filterArray = turnir.filter(el => el.name.toLowerCase().includes(inputName.toLowerCase()) && el.category.includes(category))
 
   const handleInput = (text) => {
     setInputName(text)

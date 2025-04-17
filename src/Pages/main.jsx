@@ -1,5 +1,5 @@
-import { Card } from "../Card"
-import { Filter } from "../Filter"
+import { Card } from "../Components/Card"
+import { Filter } from "../Components/Filter"
 
 
 export const Main = ({handleChandeCategory, ChangeFavourites, favourites, filterArray, category, openFilter}) => {
