@@ -1,7 +1,6 @@
 
 import { useEffect, useState } from 'react';
 import './App.css';
-
 import { Main } from './Pages/main';
 import { Route, Routes } from 'react-router-dom';
 import { Favorite } from './Pages/Favorite';
@@ -16,13 +15,13 @@ function App() {
   const [turnir, setturnir] = useState([])
 
   useEffect(() => {
-    fetch("http://localhost:5000/turnirs")
+    fetch(`http://localhost:5000/turnirs?q=${inputName}&category_like=${category}`)
       .then((response) => response.json())
       .then((result) => {
           setturnir(result)
       })
       .catch((error) => console.log(error))
-}, [])
+}, [inputName, category])
 
   const FavoriteCards = turnir.filter(turnir => favourites.includes(turnir.id))
 
@@ -57,7 +56,7 @@ function App() {
               handleChandeCategory={handleChandeCategory}
               ChangeFavourites={ChangeFavourites}
               favourites={favourites}
-              filterArray={filterArray}
+              turnirs={turnir}
               category={category}
               openFilter={openFilter}
             />

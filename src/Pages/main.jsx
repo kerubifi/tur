@@ -2,12 +2,12 @@ import { Card } from "../Components/Card"
 import { Filter } from "../Components/Filter"
 
 
-export const Main = ({handleChandeCategory, ChangeFavourites, favourites, filterArray, category, openFilter}) => {
+export const Main = ({handleChandeCategory, ChangeFavourites, favourites, turnirs, category, openFilter}) => {
     return (
         <div>
             {openFilter && <Filter handleChandeCategory={handleChandeCategory} category={category} />}
             <div className='cardsbox'>
-                {filterArray.map((el) => (
+                {turnirs.map((el) => (
                     <Card
                         ChangeFavourites={ChangeFavourites}
                         favourites={favourites}
