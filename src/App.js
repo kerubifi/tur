@@ -8,24 +8,33 @@ import { Header } from './Components/Header';
 
 
 function App() {
+  const [turnir, setturnir] = useState([])
   const [inputName, setInputName] = useState('')
   const [openFilter, setOpenFilter] = useState(false)
   const [category, setCategory] = useState('')
-  const [favourites, setFavourites] = useState([])
-  const [turnir, setturnir] = useState([])
+  const [favoriteTurnirs, setFavoriteTurnirs] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:5000/turnirs?q=${inputName}&category_like=${category}`)
+    fetch(`http://localhost:5000/turnirs?name_like=${inputName}&category_like=${category}`)
       .then((response) => response.json())
       .then((result) => {
-          setturnir(result)
+        setturnir(result)
       })
       .catch((error) => console.log(error))
-}, [inputName, category])
+  }, [inputName, category])
 
-  const FavoriteCards = turnir.filter(turnir => favourites.includes(turnir.id))
+  const loadFavorite = () => {
+    fetch(`http://localhost:5000/favorite`)
+      .then((response) => response.json())
+      .then((result) => {
+        setFavoriteTurnirs(result)
+      })
+      .catch((error) => console.log(error))
+  }
 
-  const filterArray = turnir.filter(el => el.name.toLowerCase().includes(inputName.toLowerCase()) && el.category.includes(category))
+  useEffect(() => {
+    loadFavorite()
+  }, [])
 
   const handleInput = (text) => {
     setInputName(text)
@@ -42,8 +51,21 @@ function App() {
       setCategory(changetcategory)
   }
 
-  const ChangeFavourites = (id) => {
-    favourites.includes(id) ? setFavourites(favourites.filter((i) => i !== id)) : setFavourites([...favourites, id])
+  const ChangeFavourites = (turnir) => {
+    if (favoriteTurnirs.some(el => el.id === turnir.id)) {
+      fetch(`http://localhost:5000/favorite/${turnir.id}`, {
+        method: "DELETE",
+      }).then(result => loadFavorite())
+    }
+    else {
+      fetch(`http://localhost:5000/favorite`, {
+        method: "POST",
+        body: JSON.stringify(turnir),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then(result => loadFavorite())
+    }
   }
 
   return (
@@ -55,14 +77,14 @@ function App() {
             <Main
               handleChandeCategory={handleChandeCategory}
               ChangeFavourites={ChangeFavourites}
-              favourites={favourites}
+              favoriteIds={favoriteTurnirs.map(i => i.id)}
               turnirs={turnir}
               category={category}
               openFilter={openFilter}
             />
           }
         />
-        <Route path="/favorite" element={<Favorite FavoriteCards={FavoriteCards} />} />
+        <Route path="/favorite" element={<Favorite favoriteTurnirs={favoriteTurnirs} />} />
       </Routes>
     </div>
   );

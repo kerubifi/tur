@@ -1,21 +1,15 @@
 import { Card } from "../Components/Card"
 
-export const Favorite = ({ FavoriteCards }) => {
+export const Favorite = ({ favoriteTurnirs }) => {
     return (
         <div>
             <div className='cardsbox'>
-                {FavoriteCards.length ?
-                    FavoriteCards.map((el) => (
+                {favoriteTurnirs.length ?
+                    favoriteTurnirs.map((el) => (
                         <Card
-                            id={el.id}
                             key={el.id}
-                            name={el.name}
-                            category={el.category}
-                            groupse={el.groupse}
-                            peopleInGroup={el.peopleInGroupe}
-                            prize={el.prize}
-                            img={el.img}
-                            alt={el.alt} />
+                            turnir={el}
+                            />
                             
                     )) : <p>no</p>}
             </div>
