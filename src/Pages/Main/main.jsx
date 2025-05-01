@@ -1,5 +1,5 @@
-import { Card } from "../Components/Card"
-import { Filter } from "../Components/Filter"
+import { Card } from "../../Components/Card"
+import { Filter } from "../../Components/Filter"
 
 
 export const Main = ({handleChandeCategory, ChangeFavourites, favoriteIds, turnirs, category, openFilter}) => {
@@ -9,6 +9,7 @@ export const Main = ({handleChandeCategory, ChangeFavourites, favoriteIds, turni
             <div className='cardsbox'>
                 {turnirs.map((turnir) => (
                     <Card
+                        key={turnir.id}
                         ChangeFavourites={ChangeFavourites}
                         favoriteIds={favoriteIds}
                         turnir={turnir}/>

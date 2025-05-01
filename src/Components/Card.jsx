@@ -4,6 +4,7 @@ export const Card = ({ ChangeFavourites, favoriteIds, turnir }) => {
         <div className='cards'>
             <div className='izflex'>
                 <div><img src={img} alt={alt} width={30} /></div>
+                {console.log(favoriteIds)}
                  {favoriteIds && <div ><img onClick={() => ChangeFavourites(turnir)} src={favoriteIds.includes(id) ? require('../images/iconStar.png') : require('../images/iconEmptyStar.png')} alt='izbranoe' width={10} /></div>}
             </div>
             <div>{name}</div>

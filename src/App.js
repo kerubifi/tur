@@ -1,39 +1,31 @@
 
 import { useEffect, useState } from 'react';
 import './App.css';
-import { Main } from './Pages/main';
+import { Main } from './Pages/Main/main';
 import { Route, Routes } from 'react-router-dom';
-import { Favorite } from './Pages/Favorite';
+import { Favorite } from './Pages/Favorite/Favorite';
 import { Header } from './Components/Header';
+import { addFavorite, delFavorite, fetchFavorite } from './Pages/Favorite/FavoriteSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchTurnirs } from './Pages/Main/TurnirsSlice';
 
 
 function App() {
-  const [turnir, setturnir] = useState([])
   const [inputName, setInputName] = useState('')
   const [openFilter, setOpenFilter] = useState(false)
   const [category, setCategory] = useState('')
-  const [favoriteTurnirs, setFavoriteTurnirs] = useState([])
+  
+  const favorite = useSelector((state) => state.favorite.favorite)
+  const turnirs = useSelector((state) => state.turnirs.turnirs)
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    fetch(`http://localhost:5000/turnirs?name_like=${inputName}&category_like=${category}`)
-      .then((response) => response.json())
-      .then((result) => {
-        setturnir(result)
-      })
-      .catch((error) => console.log(error))
+    dispatch(fetchTurnirs({inputName, category}))
   }, [inputName, category])
 
-  const loadFavorite = () => {
-    fetch(`http://localhost:5000/favorite`)
-      .then((response) => response.json())
-      .then((result) => {
-        setFavoriteTurnirs(result)
-      })
-      .catch((error) => console.log(error))
-  }
-
   useEffect(() => {
-    loadFavorite()
+    dispatch(fetchFavorite())
   }, [])
 
   const handleInput = (text) => {
@@ -52,22 +44,13 @@ function App() {
   }
 
   const ChangeFavourites = (turnir) => {
-    if (favoriteTurnirs.some(el => el.id === turnir.id)) {
-      fetch(`http://localhost:5000/favorite/${turnir.id}`, {
-        method: "DELETE",
-      }).then(result => loadFavorite())
+    if (favorite.some(el => el.id === turnir.id)) {
+      dispatch(delFavorite(turnir.id))
     }
     else {
-      fetch(`http://localhost:5000/favorite`, {
-        method: "POST",
-        body: JSON.stringify(turnir),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }).then(result => loadFavorite())
+      dispatch(addFavorite(turnir))
     }
   }
-
   return (
     <div>
       <Header handleInput={handleInput} handleOpen={handleOpen} />
@@ -77,14 +60,14 @@ function App() {
             <Main
               handleChandeCategory={handleChandeCategory}
               ChangeFavourites={ChangeFavourites}
-              favoriteIds={favoriteTurnirs.map(i => i.id)}
-              turnirs={turnir}
+              favoriteIds={favorite.map(i => i.id)}
+              turnirs={turnirs}
               category={category}
               openFilter={openFilter}
             />
           }
         />
-        <Route path="/favorite" element={<Favorite favoriteTurnirs={favoriteTurnirs} />} />
+        <Route path="/favorite" element={<Favorite />} />
       </Routes>
     </div>
   );

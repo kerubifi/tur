@@ -43,6 +43,16 @@
   ],
   "favorite": [
     {
+      "id": 2,
+      "name": "CS-GO",
+      "category": "1-person-shooter",
+      "groupse": 8,
+      "prize": 1000,
+      "peopleInGroupe": 5,
+      "img": "'../images/games/csgo.png'",
+      "alt": "CSGO"
+    },
+    {
       "id": 4,
       "name": "Dota2",
       "category": "moba",
