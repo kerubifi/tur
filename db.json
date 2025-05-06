@@ -43,26 +43,6 @@
   ],
   "favorite": [
     {
-      "id": 2,
-      "name": "CS-GO",
-      "category": "1-person-shooter",
-      "groupse": 8,
-      "prize": 1000,
-      "peopleInGroupe": 5,
-      "img": "'../images/games/csgo.png'",
-      "alt": "CSGO"
-    },
-    {
-      "id": 4,
-      "name": "Dota2",
-      "category": "moba",
-      "groupse": 8,
-      "prize": 1000,
-      "peopleInGroupe": 5,
-      "img": "'../images/games/dota.jpg'",
-      "alt": "Dota2"
-    },
-    {
       "id": 1,
       "name": "Valorant",
       "category": "1-person-shooter",
@@ -71,6 +51,26 @@
       "peopleInGroupe": 5,
       "img": "../images/games/valorant.jpg",
       "alt": "Valorant"
+    },
+    {
+      "id": 3,
+      "name": "LoL",
+      "category": "moba",
+      "groupse": 8,
+      "prize": 1000,
+      "peopleInGroupe": 5,
+      "img": "'../images/games/lol.jpg'",
+      "alt": "LoL"
+    },
+    {
+      "id": 2,
+      "name": "CS-GO",
+      "category": "1-person-shooter",
+      "groupse": 8,
+      "prize": 1000,
+      "peopleInGroupe": 5,
+      "img": "'../images/games/csgo.png'",
+      "alt": "CSGO"
     }
   ]
 }
