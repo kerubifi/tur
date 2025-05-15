@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux"
 import { Card } from "../../Components/Card"
 
-export const Favorite = () => {
-    const favorite = useSelector((state) => state.favorite.favorite)
+export const CartTurnirs = () => {
+    const cartTurnirs = useSelector((state) => state.cartTurnirs.cartTurnirs)
 
     return (
         <div>
             <div className='cardsbox'>
-                {favorite.length ?
-                    favorite.map((el) => (
+                {cartTurnirs.length ?
+                    cartTurnirs.map((el) => (
                         <Card
                             key={el.id}
                             turnir={el}

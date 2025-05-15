@@ -12,10 +12,13 @@
     flex-wrap: wrap
 }
 .cards{
-    width: 100px;
+    width: 200px;
     box-shadow: 4px 4px 4px 4px grey;
     margin: 20px;
     padding: 5px;
+}
+.activeCart{
+    background-color: aquamarine;
 }
 .filter{
     box-shadow: 4px 4px 4px 4px darkgrey;

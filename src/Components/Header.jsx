@@ -25,6 +25,9 @@ export const Header = ({ handleInput, handleChandeCategory, category }) => {
                     <img src={filter} alt="filter" width={20} />
                 </button>
                 <input onChange={(event => handleInput(event.target.value))} />
+                <Link to="cartturnirs">
+                    <button>tur</button>
+                </Link>
                 <Link to="/favorite">
                     <div><img src={require('../images/iconStar.png')} alt='izbranoe' width={25} /></div>
                 </Link>

@@ -1,0 +1,13 @@
+.sort{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.sort span{
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.sortActive{
+    color: gray;
+}
