@@ -93,5 +93,28 @@
       "participants": 0
     }
   ],
-  "cartTurnirs": []
+  "cartTurnirs": [],
+  "comments": [
+    {
+      "UserName": "n",
+      "text": "c",
+      "turnirId": 1,
+      "date": "15.05.2025, 13:36:45",
+      "id": 1
+    },
+    {
+      "UserName": "bb",
+      "text": "bb",
+      "turnirId": 1,
+      "date": "15.05.2025, 13:54:18",
+      "id": 2
+    },
+    {
+      "UserName": "jj",
+      "text": "jj",
+      "turnirId": 4,
+      "date": "15.05.2025, 13:56:32",
+      "id": 3
+    }
+  ]
 }
