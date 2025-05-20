@@ -9,12 +9,12 @@ export const Card = memo( ({  turnir }) => {
     return (
         <div className='cards'>
             <div className='izflex'>
-                <Link to={`/turnir/${id}`}>
+                <Link className='link' to={`/turnir/${id}`}>
                     <div><Fimg name={name} /></div>
                 </Link>
                 <ToFavoriteButton turnir={turnir} />
             </div>
-            <Link to={`/turnir/${id}`}>
+            <Link className='link' to={`/turnir/${id}`}>
                 <div>{name}</div>
                 <div>Приз: {prize}</div>
                 <div>Количество команд {groupse}, по {peopleInGroupe} человек</div>

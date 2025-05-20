@@ -5,18 +5,25 @@ import { Filter } from './Filter'
 import { memo, useState } from 'react'
 import { Drawer, Input } from 'antd'
 import { debounce } from 'lodash'
+import './header.css'
+import { useSelector } from 'react-redux'
 
 export const Header = memo(({ searchParams, handleChangeFilters }) => {
+    const favorite = useSelector((state) => state.favorite.favorite)
+    const { cartTurnirs } = useSelector((state) => state.cartTurnirs)
+
     const debouncedHandler = debounce((event => handleChangeFilters('q', event.target.value)), 500)
     const [openFilter, setOpenFilter] = useState(false)
     const handleOpen = () => {
         setOpenFilter(!openFilter)
     }
 
+    const fav = favorite.reduce((acc) => acc + 1, 0)
+    const car = cartTurnirs.reduce((acc) => acc + 1, 0)
 
     return (
         <>
-            <Drawer open={openFilter} placement='left' onClose={()=> setOpenFilter(false)}>
+            <Drawer open={openFilter} placement='left' onClose={() => setOpenFilter(false)}>
                 <Filter handleChangeFilters={handleChangeFilters} searchParams={searchParams} />
             </Drawer >
             <div className='header'>
@@ -25,15 +32,20 @@ export const Header = memo(({ searchParams, handleChangeFilters }) => {
                         <img src={logo} alt="logo" width={30} />
                     </div>
                 </Link>
-                <button onClick={handleOpen}>
-                    <img src={filter} alt="filter" width={20} />
-                </button>
-                <Input onChange={debouncedHandler} defaultValue={searchParams.get('q') || ''}  />
+                <div className='filtermenu'>
+                    {searchParams.get('category') && <div className='filternum' />}
+                    <button onClick={handleOpen}>
+                        <img src={filter} alt="filter" width={20} />
+                    </button>
+                </div>
+                <Input onChange={debouncedHandler} defaultValue={searchParams.get('q') || ''} />
                 <Link to="cartturnirs">
                     <button>tur</button>
+                    {car && <div className='iconquantity'>{car}</div>}
                 </Link>
                 <Link to="/favorite">
                     <div><img src={require('../images/iconStar.png')} alt='izbranoe' width={25} /></div>
+                    {fav && <div className='iconquantity'>{fav}</div>}
                 </Link>
             </div>
         </>
