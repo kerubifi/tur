@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom'
 import { Fimg } from '../images/games/Fimg'
-import { ToCartTurnirButton } from './ToCartTurnirButton'
-import { ToFavoriteButton } from './ToFavoriteButton'
+import { ToCartTurnirButton } from './ToCartTurnirButton.tsx'
+import { ToFavoriteButton } from './ToFavoriteButton.tsx'
 import { memo } from 'react'
+import { Turnirtype } from '../types/Types.ts'
 
-export const Card = memo( ({  turnir }) => {
+type Props = {
+    turnir: Turnirtype
+}
+
+export const Card = memo(({ turnir }: Props) => {
     const { id, name, prize, groupse, peopleInGroupe, participants } = turnir
     return (
         <div className='cards'>

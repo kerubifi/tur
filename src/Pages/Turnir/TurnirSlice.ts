@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { Turnirtype } from "../../types/Types.ts";
+import { AppDispatch } from "../../store.ts";
 
-export const fetchTurnir = createAsyncThunk(
+export const fetchTurnir = createAsyncThunk<Turnirtype, string>(
     'user/fetchTurnir',
     async (id, thunkAPI) => {
         const response = await fetch(`http://localhost:5000/turnirs/${id}`)
@@ -9,7 +11,15 @@ export const fetchTurnir = createAsyncThunk(
     }
 )
 
-export const fetchComments = createAsyncThunk(
+type CommentType = {
+    UserName?: string,
+    text: string,
+    turnirId: number,
+    date: string,
+    id?: number
+}
+
+export const fetchComments = createAsyncThunk<CommentType[], number>(
     'user/fetchComments',
     async (id, thunkAPI) => {
         const response = await fetch(`http://localhost:5000/comments?turnirId=${id}`)
@@ -18,7 +28,7 @@ export const fetchComments = createAsyncThunk(
     }
 )
 
-export const addComments = createAsyncThunk(
+export const addComments = createAsyncThunk<void, CommentType, { dispatch: AppDispatch }>(
     'user/addComments',
     async (comment, { dispatch }) => {
         await fetch(`http://localhost:5000/comments`, {
@@ -32,7 +42,12 @@ export const addComments = createAsyncThunk(
     }
 )
 
-const initialState = {
+type initialStateType = {
+    turnir: Turnirtype | null
+    comments: CommentType[]
+}
+
+const initialState: initialStateType = {
     turnir: null,
     comments: []
 }
@@ -50,7 +65,7 @@ export const turnirSlice = createSlice({
             state.comments = data
         })
     },
-
+    reducers: {},
 })
 
 export default turnirSlice.reducer

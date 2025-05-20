@@ -1,20 +1,20 @@
 import { useParams } from "react-router-dom"
-import { fetchTurnir } from "./TurnirSlice"
-import { useDispatch, useSelector } from "react-redux"
+import { fetchTurnir } from "./TurnirSlice.ts"
+import { useAppDispatch, useAppSelector } from "../../reduxHooks.ts"
 import { useEffect } from "react"
 import { Fimg } from "../../images/games/Fimg"
-import { ToCartTurnirButton } from "../../Components/ToCartTurnirButton"
-import { ToFavoriteButton } from "../../Components/ToFavoriteButton"
-import { TurnirComents } from "./comments/Comments"
+import { ToCartTurnirButton } from "../../Components/ToCartTurnirButton.tsx"
+import { ToFavoriteButton } from "../../Components/ToFavoriteButton.tsx"
+import { TurnirComents } from "./comments/Comments.tsx"
 
 export const Turnir = () => {
     const { id } = useParams()
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
-    const { turnir } = useSelector((state) => state.turnir)
+    const { turnir } = useAppSelector((state) => state.turnir)
 
     useEffect(() => {
-        dispatch(fetchTurnir(id))
+        if (id) { dispatch(fetchTurnir(id)) }
     }, [])
 
     if (!turnir) {

@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { Turnirtype } from "../../types/Types.ts";
+import { AppDispatch } from "../../store.ts";
 
-export const fetchFavorite = createAsyncThunk(
+export const fetchFavorite = createAsyncThunk<Turnirtype[]>(
     'user/fetchFavorite',
     async (params, thunkAPI) => {
         const response = await fetch(`http://localhost:5000/favorite`)
@@ -9,9 +11,9 @@ export const fetchFavorite = createAsyncThunk(
     }
 )
 
-export const addFavorite = createAsyncThunk(
+export const addFavorite = createAsyncThunk<void, Turnirtype, { dispatch: AppDispatch }>(
     'user/addFavorite',
-    async (turnir, thunkAPI) => {
+    async (turnir, { dispatch }) => {
         await fetch(`http://localhost:5000/favorite`, {
             method: "POST",
             body: JSON.stringify(turnir),
@@ -19,21 +21,25 @@ export const addFavorite = createAsyncThunk(
                 "Content-Type": "application/json"
             }
         })
-        thunkAPI.dispatch(fetchFavorite())
+        dispatch(fetchFavorite())
     }
 )
 
-export const delFavorite = createAsyncThunk(
+export const delFavorite = createAsyncThunk<void, number, { dispatch: AppDispatch }>(
     'user/delFavorite',
-    async (id, thunkAPI) => {
+    async (id, { dispatch }) => {
         await fetch(`http://localhost:5000/favorite/${id}`, {
             method: "DELETE",
         })
-        thunkAPI.dispatch(fetchFavorite())
+        dispatch(fetchFavorite())
     }
 )
 
-const initialState = {
+type initialStateType = {
+    favorite: Turnirtype[]
+}
+
+const initialState: initialStateType = {
     favorite: [],
 }
 
@@ -46,6 +52,7 @@ export const favoriteSlice = createSlice({
             state.favorite = data
         })
     },
+    reducers: {},
 })
 
 export default favoriteSlice.reducer

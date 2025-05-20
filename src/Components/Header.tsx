@@ -1,16 +1,21 @@
 import logo from '../images/openfaas-dark.svg'
 import filter from '../images/iconfilter.png'
 import { Link } from 'react-router-dom'
-import { Filter } from './Filter'
+import { Filter } from './Filter.tsx'
 import { memo, useState } from 'react'
 import { Drawer, Input } from 'antd'
 import { debounce } from 'lodash'
 import './header.css'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '../reduxHooks.ts'
 
-export const Header = memo(({ searchParams, handleChangeFilters }) => {
-    const favorite = useSelector((state) => state.favorite.favorite)
-    const { cartTurnirs } = useSelector((state) => state.cartTurnirs)
+type Props = {
+    handleChangeFilters: (a: string, b: string) => void
+    searchParams: URLSearchParams
+}
+
+export const Header = memo(({ searchParams, handleChangeFilters }: Props) => {
+    const favorite = useAppSelector((state) => state.favorite.favorite)
+    const { cartTurnirs } = useAppSelector((state) => state.cartTurnirs)
 
     const debouncedHandler = debounce((event => handleChangeFilters('q', event.target.value)), 500)
     const [openFilter, setOpenFilter] = useState(false)

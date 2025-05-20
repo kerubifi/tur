@@ -1,18 +1,23 @@
 import { Button, Form, Input } from "antd"
 import { useEffect } from "react"
-import { addComments, fetchComments } from "../TurnirSlice"
-import { useDispatch, useSelector } from "react-redux"
+import { addComments, fetchComments } from "../TurnirSlice.ts"
+import { useAppDispatch, useAppSelector } from "../../../reduxHooks.ts"
 
-export const TurnirComents = ({ turnirId }) => {
-    const comments = useSelector(state => state.turnir.comments)
+type CommentForm ={
+    username: string
+    text: string
+}
 
-    const dispatch = useDispatch()
+export const TurnirComents = ({ turnirId }: {turnirId: number}) => {
+    const comments = useAppSelector(state => state.turnir.comments)
+
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
         dispatch(fetchComments(turnirId))
     }, [turnirId])
 
-    const handleFinish = (values) => {
+    const handleFinish = (values: CommentForm) => {
         const date = new Date().toLocaleString()
         dispatch(addComments({ ...values, turnirId, date }))
     }

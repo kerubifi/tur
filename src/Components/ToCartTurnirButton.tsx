@@ -1,10 +1,11 @@
-import { useDispatch, useSelector } from "react-redux"
-import { addCartTurnirs, delCartTurnirs } from "../Pages/CartTurnirs/CartTurnirsSlice"
+import { useAppDispatch, useAppSelector } from "../reduxHooks.ts"
+import { addCartTurnirs, delCartTurnirs } from "../Pages/CartTurnirs/CartTurnirsSlice.ts"
+import { Turnirtype } from "../types/Types.ts"
 
-export const ToCartTurnirButton = ({ turnir }) => {
-    const cartTurnirs = useSelector((state) => state.cartTurnirs.cartTurnirs)
+export const ToCartTurnirButton = ({ turnir }: { turnir: Turnirtype }) => {
+    const cartTurnirs = useAppSelector((state) => state.cartTurnirs.cartTurnirs)
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const cartTurnirsIds = cartTurnirs.map(i => i.id)
 

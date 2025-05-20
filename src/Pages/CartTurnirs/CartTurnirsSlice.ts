@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { Turnirtype } from "../../types/Types.ts";
+import { AppDispatch } from "../../store.ts"
 
-export const fetchCartTurnirs = createAsyncThunk(
+export const fetchCartTurnirs = createAsyncThunk<Turnirtype[]>(
     'user/fetchCartTurnirs',
     async (params, thunkAPI) => {
         const response = await fetch(`http://localhost:5000/cartTurnirs`)
@@ -9,9 +11,9 @@ export const fetchCartTurnirs = createAsyncThunk(
     }
 )
 
-export const addCartTurnirs = createAsyncThunk(
+export const addCartTurnirs = createAsyncThunk<void, Turnirtype, { dispatch: AppDispatch }>(
     'user/addCartTurnirs',
-    async (turnir, thunkAPI) => {
+    async (turnir, { dispatch }) => {
         await fetch(`http://localhost:5000/cartTurnirs`, {
             method: "POST",
             body: JSON.stringify(turnir),
@@ -19,11 +21,11 @@ export const addCartTurnirs = createAsyncThunk(
                 "Content-Type": "application/json"
             }
         })
-        thunkAPI.dispatch(fetchCartTurnirs())
+        dispatch(fetchCartTurnirs())
     }
 )
 
-export const delCartTurnirs = createAsyncThunk(
+export const delCartTurnirs = createAsyncThunk<void, number, { dispatch: AppDispatch }>(
     'user/delCartTurnirs',
     async (id, thunkAPI) => {
         await fetch(`http://localhost:5000/cartTurnirs/${id}`, {
@@ -33,7 +35,12 @@ export const delCartTurnirs = createAsyncThunk(
     }
 )
 
-const initialState = {
+type initialStateType = {
+    cartTurnirs: Turnirtype[]
+}
+
+
+const initialState: initialStateType = {
     cartTurnirs: [],
 }
 
@@ -46,6 +53,7 @@ export const CartTurnirsSlice = createSlice({
             state.cartTurnirs = data
         })
     },
+    reducers: {},
 })
 
 export default CartTurnirsSlice.reducer

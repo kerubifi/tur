@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux"
-import { Card } from "../../Components/Card"
+import { useAppSelector } from "../../reduxHooks.ts"
+import { Card } from "../../Components/Card.tsx"
 
 export const Favorite = () => {
-    const favorite = useSelector((state) => state.favorite.favorite)
+    const favorite = useAppSelector((state) => state.favorite.favorite)
 
     return (
         <div>

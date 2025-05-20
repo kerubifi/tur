@@ -1,10 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { addFavorite, delFavorite } from '../Pages/Favorite/FavoriteSlice'
+import { useAppDispatch, useAppSelector } from '../reduxHooks.ts'
+import { addFavorite, delFavorite } from '../Pages/Favorite/FavoriteSlice.ts'
+import { Turnirtype } from '../types/Types.ts'
 
-export const ToFavoriteButton = ({ turnir }) => {
-    const favorite = useSelector((state) => state.favorite.favorite)
+export const ToFavoriteButton = ({ turnir }: { turnir: Turnirtype }) => {
+    const favorite = useAppSelector((state) => state.favorite.favorite)
 
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
 
     const favoriteIds = favorite.map(i => i.id)
 

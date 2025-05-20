@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { Turnirtype } from "../../types/Types.ts";
 
-export const fetchTurnirs = createAsyncThunk(
+export const fetchTurnirs = createAsyncThunk<Turnirtype[], string>(
     'user/fetchTurnirs',
     async (params, thunkAPI) => {
         const response = await fetch(`http://localhost:5000/turnirs?${params}`)
@@ -9,7 +10,11 @@ export const fetchTurnirs = createAsyncThunk(
     },
 )
 
-const initialState = {
+type initialStateType = {
+    turnirs: Turnirtype[]
+}
+
+const initialState: initialStateType = {
     turnirs: [],
 }
 
@@ -22,6 +27,7 @@ export const turnirsSlice = createSlice({
             state.turnirs = data
         })
     },
+    reducers: {},
 })
 
 export default turnirsSlice.reducer
