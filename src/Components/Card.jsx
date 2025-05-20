@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom'
 import { Fimg } from '../images/games/Fimg'
 import { ToCartTurnirButton } from './ToCartTurnirButton'
 import { ToFavoriteButton } from './ToFavoriteButton'
+import { memo } from 'react'
 
-export const Card = ({  turnir }) => {
+export const Card = memo( ({  turnir }) => {
     const { id, name, prize, groupse, peopleInGroupe, participants } = turnir
     return (
         <div className='cards'>
@@ -22,4 +23,4 @@ export const Card = ({  turnir }) => {
             <ToCartTurnirButton turnir={turnir} />
         </div>
     )
-}
+})
