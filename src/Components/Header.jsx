@@ -3,6 +3,7 @@ import filter from '../images/iconfilter.png'
 import { Link } from 'react-router-dom'
 import { Filter } from './Filter'
 import { useState } from 'react'
+import { Drawer } from 'antd'
 
 export const Header = ({ handleInput, handleChandeCategory, category }) => {
     const [openFilter, setOpenFilter] = useState(false)
@@ -14,7 +15,9 @@ export const Header = ({ handleInput, handleChandeCategory, category }) => {
 
     return (
         <>
-            {openFilter && <Filter handleChandeCategory={handleChandeCategory} category={category} />}
+            <Drawer open={openFilter} placement='left' onClose={()=> setOpenFilter(false)}>
+                <Filter handleChandeCategory={handleChandeCategory} category={category} />
+            </Drawer >
             <div className='header'>
                 <Link to="/">
                     <div>

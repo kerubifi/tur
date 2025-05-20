@@ -55,44 +55,7 @@
       "participants": 8
     }
   ],
-  "favorite": [
-    {
-      "id": 5,
-      "name": "Valorant",
-      "category": "1-person-shooter",
-      "groupse": 8,
-      "prize": 2000,
-      "peopleInGroupe": 5,
-      "participants": 8
-    },
-    {
-      "id": 6,
-      "name": "CS-GO",
-      "category": "1-person-shooter",
-      "groupse": 8,
-      "prize": 1000,
-      "peopleInGroupe": 5,
-      "participants": 10
-    },
-    {
-      "id": 3,
-      "name": "LoL",
-      "category": "moba",
-      "groupse": 8,
-      "prize": 1000,
-      "peopleInGroupe": 5,
-      "participants": 0
-    },
-    {
-      "id": 4,
-      "name": "Dota2",
-      "category": "moba",
-      "groupse": 8,
-      "prize": 1000,
-      "peopleInGroupe": 5,
-      "participants": 0
-    }
-  ],
+  "favorite": [],
   "cartTurnirs": [],
   "comments": [
     {
