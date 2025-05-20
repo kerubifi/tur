@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { Main } from './Pages/Main/main';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useSearchParams } from 'react-router-dom';
 import { Favorite } from './Pages/Favorite/Favorite';
 import { Header } from './Components/Header';
 import { fetchFavorite } from './Pages/Favorite/FavoriteSlice';
@@ -14,46 +14,49 @@ import { Turnir } from './Pages/Turnir/turnir';
 
 
 function App() {
-  const [inputName, setInputName] = useState('')
-  const [category, setCategory] = useState('')
-  const [sort, setsort] = useState('')
+
+  let [searchParams, setSearchParams] = useSearchParams()
+
+  const newParams = new URLSearchParams(searchParams)
+
+  const handleChangeFilters = (key, value) => {
+    if (newParams.get(key) === value) {
+      newParams.delete(key)
+      key === '_order' && newParams.delete('_sort')
+    } else if (key === '_order') {
+      newParams.set('_sort', 'participants')
+      newParams.set(key, value)
+    }
+    else {
+      newParams.set(key, value)
+    }
+    if (key !== '_page') {
+      newParams.set('_page', 1)
+    }
+    setSearchParams(newParams)
+  }
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchTurnirs({ inputName, category, sort }))
-  }, [inputName, category, sort])
+    if (searchParams) {
+      dispatch(fetchTurnirs(searchParams.toString()))
+    }
+  }, [searchParams])
 
   useEffect(() => {
+    newParams.set('_page', 1)
+    setSearchParams(newParams)
     dispatch(fetchFavorite())
     dispatch(fetchCartTurnirs())
   }, [])
 
-  const handleInput = (text) => {
-    setInputName(text)
-  }
-
-  const handleChandeCategory = (changetcategory) => {
-    if (changetcategory === category) {
-      setCategory('')
-    } else
-      setCategory(changetcategory)
-  }
-
-  const handleChangeSort = (order) => {
-    if (order === sort){
-      setsort('')
-      return
-    }
-    setsort(order)
-  }
-
   return (
     <div>
-      <Header handleInput={handleInput} handleChandeCategory={handleChandeCategory} category={category} />
+      <Header handleChangeFilters={handleChangeFilters} searchParams={searchParams} />
       <Routes>
         <Route path="/"
-          element={<Main handleChangeSort={handleChangeSort} sort={sort} />}
+          element={<Main handleChangeFilters={handleChangeFilters} searchParams={searchParams} />}
         />
         <Route path="/favorite" element={<Favorite />} />
         <Route path="/cartturnirs" element={<CartTurnirs />} />

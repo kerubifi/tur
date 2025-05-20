@@ -1,13 +1,14 @@
 import { useSelector } from "react-redux"
 import { Card } from "../../Components/Card"
 import { Sort } from "../../Components/Sort/sort"
+import { Pagination } from "antd"
 
-export const Main = ({ handleChangeSort, sort }) => {
+export const Main = ({handleChangeFilters, searchParams }) => {
   const turnirs = useSelector((state) => state.turnirs.turnirs)
 
   return (
     <div>
-      <Sort handleChangeSort={handleChangeSort} sort={sort} />
+      <Sort handleChangeFilters={handleChangeFilters} searchParams={searchParams} />
       <div className='cardsbox'>
         {turnirs.map((turnir) => (
           <Card
@@ -15,6 +16,7 @@ export const Main = ({ handleChangeSort, sort }) => {
             turnir={turnir} />
         ))}
       </div>
+      <Pagination total={12} current={searchParams.get('_page')} onChange={(page) => handleChangeFilters('_page', page)} />
     </div>
   )
 }

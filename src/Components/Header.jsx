@@ -5,7 +5,7 @@ import { Filter } from './Filter'
 import { useState } from 'react'
 import { Drawer } from 'antd'
 
-export const Header = ({ handleInput, handleChandeCategory, category }) => {
+export const Header = ({ searchParams, handleChangeFilters }) => {
     const [openFilter, setOpenFilter] = useState(false)
 
     const handleOpen = () => {
@@ -16,7 +16,7 @@ export const Header = ({ handleInput, handleChandeCategory, category }) => {
     return (
         <>
             <Drawer open={openFilter} placement='left' onClose={()=> setOpenFilter(false)}>
-                <Filter handleChandeCategory={handleChandeCategory} category={category} />
+                <Filter handleChangeFilters={handleChangeFilters} searchParams={searchParams} />
             </Drawer >
             <div className='header'>
                 <Link to="/">
@@ -27,7 +27,7 @@ export const Header = ({ handleInput, handleChandeCategory, category }) => {
                 <button onClick={handleOpen}>
                     <img src={filter} alt="filter" width={20} />
                 </button>
-                <input onChange={(event => handleInput(event.target.value))} />
+                <input onChange={(event => handleChangeFilters('q', event.target.value))} value={searchParams.get('q') || ''} />
                 <Link to="cartturnirs">
                     <button>tur</button>
                 </Link>
