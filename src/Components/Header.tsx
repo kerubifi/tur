@@ -3,29 +3,34 @@ import filter from '../images/iconfilter.png'
 import { Link } from 'react-router-dom'
 import { Filter } from './Filter.tsx'
 import { memo, useState } from 'react'
-import { Drawer, Input } from 'antd'
+import { Drawer, Input, Modal } from 'antd'
 import { debounce } from 'lodash'
 import './header.css'
 import { useAppSelector } from '../reduxHooks.ts'
+import { SearchParamsType } from '../types/Types.ts'
+import { Login } from './Login/Login.tsx'
 
-type Props = {
-    handleChangeFilters: (a: string, b: string) => void
-    searchParams: URLSearchParams
-}
+export const Header = memo(({ searchParams, handleChangeFilters }: SearchParamsType) => {
+    const [OpenModal, setOpenModal] = useState(false)
+    const [OpenMenu, setOpenMenu] = useState(false)
 
-export const Header = memo(({ searchParams, handleChangeFilters }: Props) => {
     const favorite = useAppSelector((state) => state.favorite.favorite)
     const { cartTurnirs } = useAppSelector((state) => state.cartTurnirs)
+    const { user, error } = useAppSelector((state) => state.user)
 
-    const debouncedHandler = debounce((event => handleChangeFilters('q', event.target.value)), 500)
+    const debouncedHandler = debounce(((event: React.ChangeEvent<HTMLInputElement>) => handleChangeFilters('q', event.target.value)), 500)
     const [openFilter, setOpenFilter] = useState(false)
+
+    const closeModal = () => {
+        setOpenModal(false)
+    }
+
     const handleOpen = () => {
         setOpenFilter(!openFilter)
     }
-
+    console.log(user)
     const fav = favorite.reduce((acc) => acc + 1, 0)
     const car = cartTurnirs.reduce((acc) => acc + 1, 0)
-
     return (
         <>
             <Drawer open={openFilter} placement='left' onClose={() => setOpenFilter(false)}>
@@ -52,6 +57,14 @@ export const Header = memo(({ searchParams, handleChangeFilters }: Props) => {
                     <div><img src={require('../images/iconStar.png')} alt='izbranoe' width={25} /></div>
                     {fav && <div className='iconquantity'>{fav}</div>}
                 </Link>
+                <div onClick={user === null ? () => setOpenModal(true) : () => setOpenMenu(!OpenMenu)}><img src={require('../images/user.png')} alt='izbranoe' width={25} /></div>
+                <Modal destroyOnHidden footer={null} onCancel={closeModal} open={OpenModal}><Login closeModal={closeModal} /></Modal>
+                <Drawer width={180} open={OpenMenu} placement='right' onClose={() => setOpenMenu(false)}>
+                    <Link to="/addturnir">
+                        <span>+</span>
+                    </Link>
+                </Drawer >
+
             </div>
         </>
     )

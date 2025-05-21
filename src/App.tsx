@@ -61,6 +61,7 @@ function App() {
         <Route path="/favorite" element={<Favorite />} />
         <Route path="/cartturnirs" element={<CartTurnirs />} />
         <Route path="/turnir/:id" element={<Turnir />} />
+        <Route path="/addturnir" element={<div/>} />
       </Routes>
     </div>
   );

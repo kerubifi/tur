@@ -79,5 +79,15 @@
       "date": "15.05.2025, 13:56:32",
       "id": 3
     }
+  ],
+  "users": [
+    {
+      "login": "kerubifi",
+      "password": "88888888",
+      "password2": "88888888",
+      "mail": "playkirill061@gmail.com",
+      "role": 1,
+      "id": 1
+    }
   ]
 }
