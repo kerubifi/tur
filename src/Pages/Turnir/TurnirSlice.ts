@@ -28,6 +28,19 @@ export const fetchComments = createAsyncThunk<CommentType[], number>(
     }
 )
 
+export const addTurnir = createAsyncThunk<void, Turnirtype>(
+    'user/addTurnir',
+    async (turnir) => {
+        await fetch(`http://localhost:5000/turnirs`, {
+            method: 'POST',
+            body: JSON.stringify(turnir),
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+    }
+)
+
 export const addComments = createAsyncThunk<void, CommentType, { dispatch: AppDispatch }>(
     'user/addComments',
     async (comment, { dispatch }) => {

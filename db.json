@@ -7,7 +7,9 @@
       "groupse": 8,
       "prize": 1000,
       "peopleInGroupe": 5,
-      "participants": 0
+      "participants": 0,
+      "date": "19.05",
+      "time": "17:00"
     },
     {
       "id": 2,
@@ -16,7 +18,9 @@
       "groupse": 8,
       "prize": 1000,
       "peopleInGroupe": 5,
-      "participants": 0
+      "participants": 0,
+      "date": "19.05",
+      "time": "17:00"
     },
     {
       "id": 6,
@@ -25,7 +29,9 @@
       "groupse": 8,
       "prize": 1000,
       "peopleInGroupe": 5,
-      "participants": 10
+      "participants": 10,
+      "date": "19.05",
+      "time": "17:00"
     },
     {
       "id": 3,
@@ -34,7 +40,9 @@
       "groupse": 8,
       "prize": 1000,
       "peopleInGroupe": 5,
-      "participants": 0
+      "participants": 0,
+      "date": "19.05",
+      "time": "17:00"
     },
     {
       "id": 4,
@@ -43,7 +51,9 @@
       "groupse": 8,
       "prize": 1000,
       "peopleInGroupe": 5,
-      "participants": 0
+      "participants": 0,
+      "date": "19.05",
+      "time": "17:00"
     },
     {
       "id": 5,
@@ -52,7 +62,20 @@
       "groupse": 8,
       "prize": 2000,
       "peopleInGroupe": 5,
-      "participants": 8
+      "participants": 8,
+      "date": "19.05",
+      "time": "17:00"
+    },
+    {
+      "name": "LoL",
+      "category": "moba",
+      "date": "20.06",
+      "time": "13:00",
+      "prize": "9000",
+      "groupse": "8",
+      "peopleInGroupe": "5",
+      "participants": 0,
+      "id": 7
     }
   ],
   "favorite": [],

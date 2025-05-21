@@ -11,6 +11,7 @@ import { fetchTurnirs } from './Pages/Main/TurnirsSlice.ts';
 import { CartTurnirs } from './Pages/CartTurnirs/CartTurnirs.tsx';
 import { fetchCartTurnirs } from './Pages/CartTurnirs/CartTurnirsSlice.ts';
 import { Turnir } from './Pages/Turnir/turnir.tsx';
+import { AddTurnir } from './Pages/AddTurnir/AddTurnir.tsx';
 
 
 function App() {
@@ -61,7 +62,7 @@ function App() {
         <Route path="/favorite" element={<Favorite />} />
         <Route path="/cartturnirs" element={<CartTurnirs />} />
         <Route path="/turnir/:id" element={<Turnir />} />
-        <Route path="/addturnir" element={<div/>} />
+        <Route path="/addturnir" element={<AddTurnir />} />
       </Routes>
     </div>
   );

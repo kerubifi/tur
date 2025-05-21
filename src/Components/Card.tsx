@@ -10,7 +10,7 @@ type Props = {
 }
 
 export const Card = memo(({ turnir }: Props) => {
-    const { id, name, prize, groupse, peopleInGroupe, participants } = turnir
+    const { id, name, prize, groupse, peopleInGroupe, participants, date, time } = turnir
     return (
         <div className='cards'>
             <div className='izflex'>
@@ -21,6 +21,7 @@ export const Card = memo(({ turnir }: Props) => {
             </div>
             <Link className='link' to={`/turnir/${id}`}>
                 <div>{name}</div>
+                <div>Время проведения: {date} {time}</div>
                 <div>Приз: {prize}</div>
                 <div>Количество команд {groupse}, по {peopleInGroupe} человек</div>
                 <div>Осталось свободных мест {peopleInGroupe * groupse - participants}</div>

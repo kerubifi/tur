@@ -21,7 +21,7 @@ export const Turnir = () => {
         return <div>loaing</div>
     }
 
-    const { name, prize, groupse, peopleInGroupe, participants } = turnir
+    const { name, prize, groupse, peopleInGroupe, participants, date, time } = turnir
 
     return (
         <>
@@ -31,6 +31,7 @@ export const Turnir = () => {
                     <ToFavoriteButton turnir={turnir} />
                 </div>
                 <div>{name}</div>
+                <div>Время проведения: {date} {time}</div>
                 <div>Приз: {prize}</div>
                 <div>Количество команд {groupse}, по {peopleInGroupe} человек</div>
                 <div>Осталось свободных мест {peopleInGroupe * groupse - participants}</div>
