@@ -6,20 +6,14 @@ import { Registration, LoginUser } from "./LoginSlice.ts"
 type UserFormType = {
     login: string
     password: string
-    password2: string
     mail: string
 }
 
 export const Login = ({ closeModal }: { closeModal: () => void }) => {
     const [Openregistration, setOpenregistration] = useState(false)
-    const { user, error } = useAppSelector((state) => state.user)
+    const user = JSON.parse(localStorage.getItem('user')!)
+    const { error } = useAppSelector((state) => state.user)
     const dispatch = useAppDispatch()
-
-    useEffect(() => {
-        if (user) {
-            closeModal()
-        }
-    }, [user])
 
     useEffect(() => {
         if (error === "Такой пользователь уже зарегестрирован") {
@@ -53,14 +47,36 @@ export const Login = ({ closeModal }: { closeModal: () => void }) => {
                             <Input placeholder="Login" />
                         </Form.Item>
                         <Form.Item name="password" rules={[{ required: true, min: 8 }]}>
-                            <Input placeholder="Password" />
+                            <Input.Password placeholder="Password" />
                         </Form.Item>
                         {Openregistration && (
                             <>
-                                <Form.Item name="password2" rules={[{ required: true, min: 8 }]}>
-                                    <Input placeholder="Password2" />
+                                <Form.Item name="password2" rules={[
+                                    {
+                                        required: true,
+                                        message: 'Please confirm your password!',
+                                    },
+                                    ({ getFieldValue }) => ({
+                                        validator(_, value) {
+                                            if (!value || getFieldValue('password') === value) {
+                                                return Promise.resolve();
+                                            }
+                                            return Promise.reject(new Error('The new password that you entered do not match!'));
+                                        },
+                                    }),
+                                ]}>
+                                    <Input.Password placeholder="Password2" />
                                 </Form.Item>
-                                <Form.Item name="mail" rules={[{ required: true }]}>
+                                <Form.Item name="mail" rules={[
+                                    {
+                                        type: 'email',
+                                        message: 'The input is not valid E-mail!',
+                                    },
+                                    {
+                                        required: true,
+                                        message: 'Please input your E-mail!',
+                                    },
+                                ]}>
                                     <Input placeholder="mail" />
                                 </Form.Item>
                             </>

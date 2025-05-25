@@ -3,9 +3,9 @@ import CSGO from './csgo.png'
 import LoL from './lol.jpg'
 import Dota2 from './dota.jpg'
 
-export const Fimg = ({ name }) => {
+export const Fimg = ({ game }) => {
     let sr
-    switch (name) {
+    switch (game) {
         case 'Valorant':
             sr = Valorant
             break;
@@ -23,6 +23,6 @@ export const Fimg = ({ name }) => {
             break;
     }
     return (
-        <img src={sr} alt={name} width={30} />
+        <img src={sr} alt={game} width={30} />
     )
 }

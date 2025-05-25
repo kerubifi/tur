@@ -28,6 +28,21 @@ export const fetchComments = createAsyncThunk<CommentType[], number>(
     }
 )
 
+type GameType = {
+    game: string
+    maxpeopleInGroupe: number
+    id: number
+}
+
+export const fetchGames = createAsyncThunk<GameType[]>(
+    'user/fetchGames',
+    async (params, thunkAPI) => {
+        const response = await fetch(`http://localhost:5000/games`)
+        const result = await response.json()
+        return result
+    }
+)
+
 export const addTurnir = createAsyncThunk<void, Turnirtype>(
     'user/addTurnir',
     async (turnir) => {
@@ -58,11 +73,13 @@ export const addComments = createAsyncThunk<void, CommentType, { dispatch: AppDi
 type initialStateType = {
     turnir: Turnirtype | null
     comments: CommentType[]
+    games: GameType[]
 }
 
 const initialState: initialStateType = {
     turnir: null,
-    comments: []
+    comments: [],
+    games: []
 }
 
 export const turnirSlice = createSlice({
@@ -76,6 +93,10 @@ export const turnirSlice = createSlice({
         builder.addCase(fetchComments.fulfilled, (state, action) => {
             const data = action.payload
             state.comments = data
+        })
+        builder.addCase(fetchGames.fulfilled, (state, action) => {
+            const data = action.payload
+            state.games = data
         })
     },
     reducers: {},

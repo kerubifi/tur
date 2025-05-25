@@ -1,15 +1,12 @@
-
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import './App.css';
 import { Main } from './Pages/Main/main.tsx';
 import { Route, Routes, useSearchParams } from 'react-router-dom';
 import { Favorite } from './Pages/Favorite/Favorite.tsx';
 import { Header } from './Components/Header.tsx';
-import { fetchFavorite } from './Pages/Favorite/FavoriteSlice.ts';
 import { useAppDispatch } from './reduxHooks.ts';
 import { fetchTurnirs } from './Pages/Main/TurnirsSlice.ts';
 import { CartTurnirs } from './Pages/CartTurnirs/CartTurnirs.tsx';
-import { fetchCartTurnirs } from './Pages/CartTurnirs/CartTurnirsSlice.ts';
 import { Turnir } from './Pages/Turnir/turnir.tsx';
 import { AddTurnir } from './Pages/AddTurnir/AddTurnir.tsx';
 
@@ -27,6 +24,8 @@ function App() {
     } else if (key === '_order') {
       newParams.set('_sort', 'participants')
       newParams.set(key, value)
+    } else if (value === '') {
+      newParams.delete('q')
     }
     else {
       newParams.set(key, value)
@@ -48,8 +47,6 @@ function App() {
   useEffect(() => {
     newParams.set('_page', '1')
     setSearchParams(newParams)
-    dispatch(fetchFavorite())
-    dispatch(fetchCartTurnirs())
   }, [])
 
   return (

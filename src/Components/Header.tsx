@@ -6,17 +6,14 @@ import { memo, useState } from 'react'
 import { Drawer, Input, Modal } from 'antd'
 import { debounce } from 'lodash'
 import './header.css'
-import { useAppSelector } from '../reduxHooks.ts'
 import { SearchParamsType } from '../types/Types.ts'
 import { Login } from './Login/Login.tsx'
 
 export const Header = memo(({ searchParams, handleChangeFilters }: SearchParamsType) => {
     const [OpenModal, setOpenModal] = useState(false)
     const [OpenMenu, setOpenMenu] = useState(false)
-
-    const favorite = useAppSelector((state) => state.favorite.favorite)
-    const { cartTurnirs } = useAppSelector((state) => state.cartTurnirs)
-    const { user, error } = useAppSelector((state) => state.user)
+    const user = JSON.parse(localStorage.getItem('user')!)
+    console.log(JSON.parse(localStorage.getItem('user')!))
 
     const debouncedHandler = debounce(((event: React.ChangeEvent<HTMLInputElement>) => handleChangeFilters('q', event.target.value)), 500)
     const [openFilter, setOpenFilter] = useState(false)
@@ -28,9 +25,9 @@ export const Header = memo(({ searchParams, handleChangeFilters }: SearchParamsT
     const handleOpen = () => {
         setOpenFilter(!openFilter)
     }
-    console.log(user)
-    const fav = favorite.reduce((acc) => acc + 1, 0)
-    const car = cartTurnirs.reduce((acc) => acc + 1, 0)
+
+    const fav = user?.favorite!.reduce((acc: number) => acc + 1, 0)
+    const car = user?.cartTurnirs!.reduce((acc: number) => acc + 1, 0)
     return (
         <>
             <Drawer open={openFilter} placement='left' onClose={() => setOpenFilter(false)}>
@@ -48,7 +45,7 @@ export const Header = memo(({ searchParams, handleChangeFilters }: SearchParamsT
                         <img src={filter} alt="filter" width={20} />
                     </button>
                 </div>
-                <Input onChange={debouncedHandler} defaultValue={searchParams.get('q') || ''} />
+                <Input onChange={debouncedHandler} defaultValue={searchParams.get('name') || ''} />
                 <Link to="cartturnirs">
                     <button>tur</button>
                     {car && <div className='iconquantity'>{car}</div>}
@@ -63,6 +60,7 @@ export const Header = memo(({ searchParams, handleChangeFilters }: SearchParamsT
                     <Link to="/addturnir">
                         <span>+</span>
                     </Link>
+                    <span onClick={() => { localStorage.removeItem('user'); window.location.reload() }}>exit</span>
                 </Drawer >
 
             </div>

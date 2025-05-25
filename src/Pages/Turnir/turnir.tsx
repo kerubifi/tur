@@ -21,23 +21,23 @@ export const Turnir = () => {
         return <div>loaing</div>
     }
 
-    const { name, prize, groupse, peopleInGroupe, participants, date, time } = turnir
+    const { game, prize, groupse, peopleInGroupe, participants, date } = turnir
 
     return (
         <>
             <div>
                 <div className='izflex'>
-                    <div><Fimg name={name} /></div>
+                    <div><Fimg game={game} /></div>
                     <ToFavoriteButton turnir={turnir} />
                 </div>
-                <div>{name}</div>
-                <div>Время проведения: {date} {time}</div>
+                <div>{game}</div>
+                <div>Время проведения: {date}</div>
                 <div>Приз: {prize}</div>
                 <div>Количество команд {groupse}, по {peopleInGroupe} человек</div>
                 <div>Осталось свободных мест {peopleInGroupe * groupse - participants}</div>
                 <ToCartTurnirButton turnir={turnir} />
             </div>
-            <TurnirComents turnirId={turnir.id} />
+            <TurnirComents turnirId={turnir.id!} />
         </>
     )
 }

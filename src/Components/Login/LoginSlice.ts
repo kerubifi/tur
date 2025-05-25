@@ -1,4 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { UserType } from "../../types/Types";
+import { AppDispatch } from "../../store";
 
 const getUsers = async (): Promise<UserType[]> => {
     const response = await fetch(`http://localhost:5000/users`)
@@ -28,15 +30,14 @@ export const Registration = createAsyncThunk<UserType, UserType, { rejectValue: 
         const checkUser = users.some(
             (user) => user.login === userForm.login || user.mail === userForm.mail
         )
-
-        if (userForm.password !== userForm.password2) {
-            return rejectWithValue({ error: "Пароли не совпадают" })
-        }
-
         if (checkUser) {
             return rejectWithValue({ error: "Такой пользователь уже зарегестрирован" })
         } else {
             userForm.role = 0
+            userForm.favorite = []
+            userForm.cartTurnirs = []
+            userForm.turnirs = []
+            userForm.userTurnir = []
             const result = await fetch(`http://localhost:5000/users`, {
                 method: 'POST',
                 body: JSON.stringify(userForm),
@@ -50,14 +51,33 @@ export const Registration = createAsyncThunk<UserType, UserType, { rejectValue: 
     }
 )
 
-type UserType = {
-    login: string
-    password: string
-    password2?: string
-    mail?: string
-    id?: number
-    role?: number
-}
+export const ChangeFavorite = createAsyncThunk<void, UserType, { dispatch: AppDispatch }>(
+    'user/ChangeFavorite',
+    async (turnirs, { dispatch }) => {
+        await fetch(`http://localhost:5000/users/${turnirs.id}`, {
+            method: "PUT",
+            body: JSON.stringify(turnirs),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        dispatch(LoginUser(turnirs))
+    }
+)
+
+export const ChangeCart = createAsyncThunk<void, UserType, { dispatch: AppDispatch }>(
+    'user/ChangeCart',
+    async (turnirs, { dispatch }) => {
+        await fetch(`http://localhost:5000/users/${turnirs.id}`, {
+            method: "PUT",
+            body: JSON.stringify(turnirs),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        dispatch(LoginUser(turnirs))
+    }
+)
 
 type initialStateType = {
     user: UserType | null
@@ -76,6 +96,8 @@ export const registrationSlice = createSlice({
         builder.addCase(Registration.fulfilled, (state, action) => {
             state.error = null
             state.user = action.payload
+            localStorage.setItem('user', JSON.stringify(state.user))
+            window.location.reload()
         })
         builder.addCase(Registration.rejected, (state, action) => {
             state.error = action.payload ? action.payload.error : null
@@ -83,6 +105,9 @@ export const registrationSlice = createSlice({
         builder.addCase(LoginUser.fulfilled, (state, action) => {
             state.error = null
             state.user = action.payload
+            localStorage.removeItem('user')
+            localStorage.setItem('user', JSON.stringify(state.user))
+            window.location.reload()
         })
         builder.addCase(LoginUser.rejected, (state, action) => {
             state.error = action.payload ? action.payload.error : null

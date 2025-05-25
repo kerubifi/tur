@@ -10,6 +10,7 @@ type CommentForm ={
 
 export const TurnirComents = ({ turnirId }: {turnirId: number}) => {
     const comments = useAppSelector(state => state.turnir.comments)
+    const user = JSON.parse(localStorage.getItem('user')!)
 
     const dispatch = useAppDispatch()
 
@@ -25,9 +26,7 @@ export const TurnirComents = ({ turnirId }: {turnirId: number}) => {
     return (
         <div>
             <Form onFinish={handleFinish}>
-                <Form.Item name="UserName">
-                    <Input placeholder="name" />
-                </Form.Item>
+                <Form.Item name="UserName" hidden initialValue={user?.login}></Form.Item>
                 <Form.Item name="text">
                     <Input.TextArea placeholder="comment" />
                 </Form.Item>

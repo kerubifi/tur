@@ -1,20 +1,27 @@
-import { useAppDispatch, useAppSelector } from '../reduxHooks.ts'
-import { addFavorite, delFavorite } from '../Pages/Favorite/FavoriteSlice.ts'
+import { useAppDispatch} from '../reduxHooks.ts'
 import { Turnirtype } from '../types/Types.ts'
+import { ChangeFavorite } from './Login/LoginSlice.ts'
 
 export const ToFavoriteButton = ({ turnir }: { turnir: Turnirtype }) => {
-    const favorite = useAppSelector((state) => state.favorite.favorite)
+    const user = JSON.parse(localStorage.getItem('user')!)
 
     const dispatch = useAppDispatch()
 
-    const favoriteIds = favorite.map(i => i.id)
+    const favoriteIds = user?.favorite!.map(i => i.id)
 
     const ChangeFavourites = () => {
-        if (favorite.some(el => el.id === turnir.id)) {
-            dispatch(delFavorite(turnir.id))
-        }
-        else {
-            dispatch(addFavorite(turnir))
+        if (user) {
+            if (user?.favorite?.some(el => el.id === turnir.id)) {
+                const t = user.favorite.filter(e => e.id !== turnir.id)
+                const newUserData = { ...user, favorite: t }
+                dispatch(ChangeFavorite(newUserData))
+            }
+            else {
+                let t = [turnir]
+                user?.favorite?.map(x => t = [...t, x])
+                const newUserData = { ...user, favorite: t }
+                dispatch(ChangeFavorite(newUserData))
+            }
         }
     }
 
