@@ -9,6 +9,8 @@ import { fetchTurnirs } from './Pages/Main/TurnirsSlice.ts';
 import { CartTurnirs } from './Pages/CartTurnirs/CartTurnirs.tsx';
 import { Turnir } from './Pages/Turnir/turnir.tsx';
 import { AddTurnir } from './Pages/AddTurnir/AddTurnir.tsx';
+import { Profile } from './Pages/Profile/profile.tsx';
+import { Admin } from './Pages/Admin/Admin.tsx';
 
 
 function App() {
@@ -60,6 +62,8 @@ function App() {
         <Route path="/cartturnirs" element={<CartTurnirs />} />
         <Route path="/turnir/:id" element={<Turnir />} />
         <Route path="/addturnir" element={<AddTurnir />} />
+        <Route path="/userprofile/:id" element={<Profile />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </div>
   );

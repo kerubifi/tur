@@ -18,9 +18,8 @@ export const AddTurnir = () => {
     const handleFinish = (values: Turnirtype) => {
         values.date = values.date.toString()
         values.creator = user!.login
-        values.participants = 0
+        values.participants = []
         dispatch(addTurnir(values))
-        console.log(values)
         // message.success("Турнир добавлен")
         //form.resetFields()
     }

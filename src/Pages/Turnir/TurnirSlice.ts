@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { Turnirtype } from "../../types/Types.ts";
+import { ParticipantsType, Turnirtype } from "../../types/Types.ts";
 import { AppDispatch } from "../../store.ts";
+import { UpdateUserProfile } from "../Profile/ProfileSlice.ts";
 
 export const fetchTurnir = createAsyncThunk<Turnirtype, string>(
     'user/fetchTurnir',
@@ -69,6 +70,38 @@ export const addComments = createAsyncThunk<void, CommentType, { dispatch: AppDi
         dispatch(fetchComments(comment.turnirId))
     }
 )
+
+export const ChangeParticipants = createAsyncThunk<void, Turnirtype, { dispatch: AppDispatch }>(
+    'user/ChangeParticipants',
+    async (turnirs, { dispatch }) => {
+        await fetch(`http://localhost:5000/turnirs/${turnirs.id}`, {
+            method: "PUT",
+            body: JSON.stringify(turnirs),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        //dispatch(UpdateUserProfile(turnirs.id!))
+    }
+)
+
+// export const DelParticipants = createAsyncThunk<void, number, { dispatch: AppDispatch }>(
+//     'user/DelParticipants',
+//     async (id, { dispatch }) => {
+//         const user = JSON.parse(localStorage.getItem('user')!)
+//         const t = user.cartTurnirs.filter(e => e.id !== turnir.id)
+//         const newUserData = { ...user, cartTurnirs: t }
+
+//         await fetch(`http://localhost:5000/turnirs/${turnirs.id}`, {
+//             method: "PUT",
+//             body: JSON.stringify(turnirs),
+//             headers: {
+//                 "Content-Type": "application/json"
+//             }
+//         })
+//         dispatch(UpdateUserProfile(turnirs.id!))
+//     }
+// )
 
 type initialStateType = {
     turnir: Turnirtype | null

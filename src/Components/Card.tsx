@@ -24,7 +24,7 @@ export const Card = memo(({ turnir }: Props) => {
                 <div>Время проведения: {date}</div>
                 <div>Приз: {prize}</div>
                 <div>Количество команд {groupse}, по {peopleInGroupe} человек</div>
-                <div>Осталось свободных мест {peopleInGroupe * groupse - participants}</div>
+                <div>Осталось свободных мест {peopleInGroupe * groupse - participants?.length!}</div>
             </Link>
             <ToCartTurnirButton turnir={turnir} />
         </div>

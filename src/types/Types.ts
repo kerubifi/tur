@@ -1,12 +1,20 @@
 export type Turnirtype = {
-      game: string
-      date: string
-      prize: string
-      groupse: number
-      peopleInGroupe: number
-      participants: number
-      creator: string
-      id?: number
+    game: string
+    date: string
+    prize: string
+    groupse: number
+    peopleInGroupe: number
+    participants?: ParticipantsType[]
+    creator: string
+    id?: number
+}
+
+export type UserDataType = {
+    login: string
+    password: string
+    mail?: string
+    id?: number
+    role?: number
 }
 
 export type UserType = {
@@ -15,7 +23,15 @@ export type UserType = {
     mail?: string
     favorite?: Turnirtype[]
     cartTurnirs?: Turnirtype[]
-    turnirs?: Turnirtype[]
+    userTurnir?: Turnirtype[]
+    role?: number
+    id?: number
+}
+
+export type UserProfileType={
+    login: string
+    favorite?: Turnirtype[]
+    cartTurnirs?: Turnirtype[]
     userTurnir?: Turnirtype[]
     role?: number
     id?: number
@@ -24,4 +40,11 @@ export type UserType = {
 export type SearchParamsType = {
     handleChangeFilters: (a: string, b: string) => void
     searchParams: URLSearchParams
+}
+
+export type ParticipantsType={
+    Nickname: string
+    login: string
+    Comment?: string
+    id?: number
 }

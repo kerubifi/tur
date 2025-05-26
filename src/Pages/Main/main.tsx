@@ -1,6 +1,5 @@
 import { useAppSelector } from "../../reduxHooks.ts"
 import { Card } from "../../Components/Card.tsx"
-import { Sort } from "../../Components/Sort/sort.tsx"
 import { Pagination } from "antd"
 import { SearchParamsType } from "../../types/Types.ts"
 
@@ -9,7 +8,6 @@ export const Main = ({ handleChangeFilters, searchParams }: SearchParamsType) =>
 
   return (
     <div>
-      <Sort handleChangeFilters={handleChangeFilters} searchParams={searchParams} />
       <div className='cardsbox'>
         {turnirs.map((turnir) => (
           <Card

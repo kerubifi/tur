@@ -34,7 +34,7 @@ export const Turnir = () => {
                 <div>Время проведения: {date}</div>
                 <div>Приз: {prize}</div>
                 <div>Количество команд {groupse}, по {peopleInGroupe} человек</div>
-                <div>Осталось свободных мест {peopleInGroupe * groupse - participants}</div>
+                <div>Осталось свободных мест {peopleInGroupe * groupse - participants?.length!}</div>
                 <ToCartTurnirButton turnir={turnir} />
             </div>
             <TurnirComents turnirId={turnir.id!} />

@@ -12,7 +12,7 @@ type UserFormType = {
 export const Login = ({ closeModal }: { closeModal: () => void }) => {
     const [Openregistration, setOpenregistration] = useState(false)
     const user = JSON.parse(localStorage.getItem('user')!)
-    const { error } = useAppSelector((state) => state.user)
+    const { error } = useAppSelector((state) => state.userData)
     const dispatch = useAppDispatch()
 
     useEffect(() => {

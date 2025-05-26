@@ -8,7 +8,7 @@
       "peopleInGroupe": "5",
       "comment": "Aram",
       "creator": "kerubifi",
-      "participants": 0,
+      "participants": [],
       "id": 2
     },
     {
@@ -19,7 +19,7 @@
       "peopleInGroupe": "1",
       "comment": "1vs1",
       "creator": "kerubifi",
-      "participants": 0,
+      "participants": [],
       "id": 3
     },
     {
@@ -30,7 +30,13 @@
       "peopleInGroupe": "3",
       "comment": "3vs3",
       "creator": "kerubifi",
-      "participants": 0,
+      "participants": [
+        {
+          "Nickname": "kerubifi",
+          "login": "kerubifi",
+          "id": 1
+        }
+      ],
       "id": 4
     },
     {
@@ -41,7 +47,14 @@
       "peopleInGroupe": "5",
       "comment": "norm",
       "creator": "kerubifi",
-      "participants": 0,
+      "participants": [
+        {
+          "Nickname": "ger",
+          "comment": "solo",
+          "login": "12345",
+          "id": 2
+        }
+      ],
       "id": 5
     },
     {
@@ -52,8 +65,24 @@
       "peopleInGroupe": "5",
       "comment": "norm",
       "creator": "kerubifi",
-      "participants": 0,
+      "participants": [],
       "id": 6
+    }
+  ],
+  "usersData": [
+    {
+      "login": "kerubifi",
+      "password": "12345678",
+      "mail": "12345@mail.ru",
+      "role": "1",
+      "id": 1
+    },
+    {
+      "login": "123456",
+      "password": "12345678",
+      "mail": "123mail.ru",
+      "role": "0",
+      "id": 2
     }
   ],
   "comments": [
@@ -70,49 +99,35 @@
       "turnirId": 5,
       "date": "25.05.2025, 19:57:03",
       "id": 2
+    },
+    {
+      "text": "gg",
+      "turnirId": 4,
+      "date": "26.05.2025, 14:04:49",
+      "id": 3
+    },
+    {
+      "text": "gg",
+      "turnirId": 4,
+      "date": "26.05.2025, 14:05:17",
+      "id": 4
     }
   ],
   "users": [
     {
       "login": "kerubifi",
-      "password": "88888888",
-      "mail": "playkirill061@gmail.com",
       "favorite": [
         {
-          "game": "Valorant",
-          "date": "Sat, 31 May 2025 16:00:00 GMT",
-          "prize": "8000",
-          "groupse": "16",
-          "peopleInGroupe": "3",
-          "comment": "3vs3",
-          "creator": "kerubifi",
-          "participants": 0,
-          "id": 4
-        },
-        {
-          "game": "LoL",
-          "date": "Wed, 07 May 2025 00:06:00 GMT",
-          "prize": "5000",
-          "groupse": "8",
-          "peopleInGroupe": "5",
-          "comment": "norm",
-          "creator": "kerubifi",
-          "participants": 0,
-          "id": 5
-        },
-        {
-          "game": "LoL",
+          "game": "CS-GO",
           "date": "Fri, 30 May 2025 15:00:00 GMT",
           "prize": "8000",
           "groupse": "8",
-          "peopleInGroupe": "5",
-          "comment": "Aram",
+          "peopleInGroupe": "1",
+          "comment": "1vs1",
           "creator": "kerubifi",
-          "participants": 0,
-          "id": 2
-        }
-      ],
-      "cartTurnirs": [
+          "participants": [],
+          "id": 3
+        },
         {
           "game": "LoL",
           "date": "Tue, 13 May 2025 02:06:00 GMT",
@@ -121,9 +136,11 @@
           "peopleInGroupe": "5",
           "comment": "norm",
           "creator": "kerubifi",
-          "participants": 0,
+          "participants": [],
           "id": 6
-        },
+        }
+      ],
+      "cartTurnirs": [
         {
           "game": "Valorant",
           "date": "Sat, 31 May 2025 16:00:00 GMT",
@@ -132,7 +149,7 @@
           "peopleInGroupe": "3",
           "comment": "3vs3",
           "creator": "kerubifi",
-          "participants": 0,
+          "participants": [],
           "id": 4
         },
         {
@@ -143,7 +160,13 @@
           "peopleInGroupe": "5",
           "comment": "norm",
           "creator": "kerubifi",
-          "participants": 0,
+          "participants": [
+            {
+              "Nickname": "keru",
+              "login": "kerubifi",
+              "id": 1
+            }
+          ],
           "id": 5
         }
       ],
@@ -153,61 +176,10 @@
       "id": 1
     },
     {
-      "login": "12345",
+      "login": "123456",
       "password": "12345678",
-      "password2": "12345678",
-      "mail": "12345@mail.ru",
-      "role": 0,
-      "favorite": [
-        {
-          "game": "LoL",
-          "date": "Wed, 07 May 2025 00:06:00 GMT",
-          "prize": "5000",
-          "groupse": "8",
-          "peopleInGroupe": "5",
-          "comment": "norm",
-          "creator": "kerubifi",
-          "participants": 0,
-          "id": 5
-        },
-        {
-          "game": "Valorant",
-          "date": "Sat, 31 May 2025 16:00:00 GMT",
-          "prize": "8000",
-          "groupse": "16",
-          "peopleInGroupe": "3",
-          "comment": "3vs3",
-          "creator": "kerubifi",
-          "participants": 0,
-          "id": 4
-        }
-      ],
-      "cartTurnirs": [
-        {
-          "game": "CS-GO",
-          "date": "Fri, 30 May 2025 15:00:00 GMT",
-          "prize": "8000",
-          "groupse": "8",
-          "peopleInGroupe": "1",
-          "comment": "1vs1",
-          "creator": "kerubifi",
-          "participants": 0,
-          "id": 3
-        },
-        {
-          "game": "Valorant",
-          "date": "Sat, 31 May 2025 16:00:00 GMT",
-          "prize": "8000",
-          "groupse": "16",
-          "peopleInGroupe": "3",
-          "comment": "3vs3",
-          "creator": "kerubifi",
-          "participants": 0,
-          "id": 4
-        }
-      ],
-      "turnirs": [],
-      "userTurnir": [],
+      "mail": "123mail.ru",
+      "role": "1",
       "id": 2
     }
   ],
