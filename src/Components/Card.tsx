@@ -17,10 +17,10 @@ export const Card = memo(({ turnir }: Props) => {
                 <Link className='link' to={`/turnir/${id}`}>
                     <div><Fimg game={game} /></div>
                 </Link>
+                <div className='mainName'>{game}</div>
                 <ToFavoriteButton turnir={turnir} />
             </div>
             <Link className='link' to={`/turnir/${id}`}>
-                <div>{game}</div>
                 <div>Время проведения: {date}</div>
                 <div>Приз: {prize}</div>
                 <div>Количество команд {groupse}, по {peopleInGroupe} человек</div>

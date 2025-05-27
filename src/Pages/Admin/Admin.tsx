@@ -10,14 +10,14 @@ export const Admin = () => {
 
     const [menu, setmenu] = useState(1)
     return(
-        <>
+        <div className="Admin">
             <div>
                 <div onClick={()=> setmenu(1)}>1</div>
                 <div onClick={()=> setmenu(2)}>2</div>
                 <div onClick={()=> setmenu(3)}>3</div>
             </div>
             <AdminInt menu={menu} />
-        </>
+        </div>
     )
 
 }

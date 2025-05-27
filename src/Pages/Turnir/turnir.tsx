@@ -24,7 +24,7 @@ export const Turnir = () => {
     const { game, prize, groupse, peopleInGroupe, participants, date } = turnir
 
     return (
-        <>
+        <div className="Turnir">
             <div>
                 <div className='izflex'>
                     <div><Fimg game={game} /></div>
@@ -38,6 +38,6 @@ export const Turnir = () => {
                 <ToCartTurnirButton turnir={turnir} />
             </div>
             <TurnirComents turnirId={turnir.id!} />
-        </>
+        </div>
     )
 }

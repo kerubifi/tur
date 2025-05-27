@@ -24,48 +24,49 @@ export const AddTurnir = () => {
         //form.resetFields()
     }
 
-    return (<>
-        <Form onFinish={handleFinish} layout="vertical" wrapperCol={{ span: 9 }}>
-            <Form.Item name='game' label="game" rules={[{ required: true }]}>
-                <Select options={games.map((e) => ({ label: e.game, value: e.game }))} />
-            </Form.Item>
-            <Form.Item name='date' label="date" rules={[{ required: true }]}>
-                <DatePicker showTime format="YYYY-MM-DD HH:mm" />
-            </Form.Item>
-            <Form.Item name='prize' label="prize" rules={[{ required: true }]}>
-                <Input />
-            </Form.Item>
-            <Form.Item name='groupse' label="groupse" rules={[{ required: true }]}>
-                <Input />
-            </Form.Item>
-            <Form.Item name='peopleInGroupe' label="peopleInGroupe" rules={[
-                {
-                    required: true,
-                    type: 'enum',
-                    enum: ['1', '2', '3', '4', '5']
-                },
-                ({ getFieldValue }) => ({
-                    validator(_, value) {
-                        let max: number = 1
-                        games.map((e) => {
-                            if (e.game === getFieldValue('game')) {
-                                max = e.maxpeopleInGroupe
-                            }
-                        })
-                        if (!value || max >= value) {
-                            return Promise.resolve();
-                        }
-                        return Promise.reject(new Error('no'));
+    return (
+        <div className="AddTurnir">
+            <Form onFinish={handleFinish} layout="vertical" wrapperCol={{ span: 9 }}>
+                <Form.Item name='game' label="game" rules={[{ required: true }]}>
+                    <Select options={games.map((e) => ({ label: e.game, value: e.game }))} />
+                </Form.Item>
+                <Form.Item name='date' label="date" rules={[{ required: true }]}>
+                    <DatePicker showTime format="YYYY-MM-DD HH:mm" />
+                </Form.Item>
+                <Form.Item name='prize' label="prize" rules={[{ required: true }]}>
+                    <Input />
+                </Form.Item>
+                <Form.Item name='groupse' label="groupse" rules={[{ required: true }]}>
+                    <Input />
+                </Form.Item>
+                <Form.Item name='peopleInGroupe' label="peopleInGroupe" rules={[
+                    {
+                        required: true,
+                        type: 'enum',
+                        enum: ['1', '2', '3', '4', '5']
                     },
-                }),
-            ]} >
-                <Input></Input>
-            </Form.Item>
-             <Form.Item name='comment' label="comment">
-                <TextArea rows={2} />
-            </Form.Item>
-            <Button htmlType="submit" >add</Button>
-        </Form>
-    </>
+                    ({ getFieldValue }) => ({
+                        validator(_, value) {
+                            let max: number = 1
+                            games.map((e) => {
+                                if (e.game === getFieldValue('game')) {
+                                    max = e.maxpeopleInGroupe
+                                }
+                            })
+                            if (!value || max >= value) {
+                                return Promise.resolve();
+                            }
+                            return Promise.reject(new Error('no'));
+                        },
+                    }),
+                ]} >
+                    <Input></Input>
+                </Form.Item>
+                <Form.Item name='comment' label="comment">
+                    <TextArea rows={2} />
+                </Form.Item>
+                <Button htmlType="submit" >add</Button>
+            </Form>
+        </div>
     )
 }

@@ -1,22 +1,120 @@
-.filternum{
+.header {
+    background-color: rgba(17, 25, 40, 1);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    height: 50px;
+    color: #fff;
+    align-items: center;
+}
+
+.InputFlex {
+    width: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.HeaderButton {
+    display: flex;
+    justify-content: space-between;
+    width: 170px;
+}
+
+.HeaderRight {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+}
+
+.headeartextbutton {
+    position: relative;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+}
+
+.SignIn {
+    font-size: medium;
+    padding: 4px 22px;
+    color: rgba(17, 25, 40, 1);
+    background: linear-gradient(90deg, rgba(245, 175, 25, 1), rgba(241, 39, 17, 1));
+    border-radius: 3px;
+}
+
+.HeaderInput {
+    background-color: rgba(214, 216, 222, 0.4);
+    color: rgba(0, 0, 0, 0.9);
+    border: 10px, rgba(255, 255, 255, 1);
+    margin-top: auto;
+    width: 240px;
+    height: 27px;
+}
+
+.filternum {
     position: absolute;
-    right: -4px;
-    top: -4px;
-    height: 10px;
-    width: 10px;
-    background: red;
+    right: -2px;
+    top: -2px;
+    height: 8px;
+    width: 8px;
+    background: rgba(245, 175, 25, 1);
     border-radius: 50%;
 }
 
-.filtermenu{
+.filtermenu {
     position: relative;
 }
 
-.iconquantity{
+.iconquantity {
+    position: absolute;
+    top: -2px;
+    right: -8px;
     text-decoration: none;
-    color: black;
+    color: rgba(255, 255, 255, 1);
+    font-size: small;
 }
-.usermenuf{
+
+.usermenuf {
     width: 500px;
     height: 100px;
+}
+
+:where(.css-dev-only-do-not-override-1m2bkf9).ant-drawer .ant-drawer-content {
+    background-color: rgba(17, 25, 40, 0.9);
+}
+
+.filter {
+    padding-top: 0px;
+}
+
+.filteruse {
+    position: relative;
+    margin: 10px;
+}
+
+.Filteractive {
+    position: absolute;
+}
+
+.filterflex {
+    margin-top: 10px;
+    justify-content: space-between;
+    display: flex;
+    width: 10px;
+}
+
+.sort {
+    color: rgba(255, 255, 255, 1);
+}
+
+.sortactive {
+    color: rgba(245, 175, 25, 1);
+}
+
+.UserDrawer {
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+}
+.UserDrawer .link .div{
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
 }

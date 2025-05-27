@@ -50,14 +50,13 @@ export const ToCartTurnirButton = ({ turnir }: { turnir: Turnirtype }) => {
 
     const Modals = () => {
         if (user?.cartTurnirs?.some(el => el.id === turnir.id)) {
-            console.log(1)
             setvariants(true)
         } else { setvariants(false) }
         setOpenModal(true)
     }
 
     return (
-        <div>
+        <div className="CartIcon">
             {cartTurnirsIds && <button onClick={() => Modals()} className={cartTurnirsIds && cartTurnirsIds.includes(turnir.id) ? 'activeCart' : 'noactiveCart'}>Участвовать</button>}
             <Modal destroyOnHidden footer={null} onCancel={closeModal} open={OpenModal}>
                 <Form onFinish={ChangeCartTurnirs}>

@@ -11,8 +11,9 @@ export const FilterCard = ({ handleChangeFilters, searchParams, game }) => {
     const handleSelectGame = (name: string) => {
         handleChangeFilters('game', name)
     }
-    return (<div className='filterIcon'>
-
-        <button onClick={() => handleSelectGame(game.game)} className={searchParams.get('game') === game.game ? 'active' : ''}><Fimg game={game.game} /></button>
-    </div>)
+    return (
+        <div className='filteruse'>
+            {searchParams.get('game') === game.game ? <img onClick={() => handleSelectGame(game.game)} className="Filteractive" src={require("../images/yes.png")} alt="yes" width={35} /> : ''}
+            <div onClick={() => handleSelectGame(game.game)} className="FilterIcon"><Fimg game={game.game} /></div>
+        </div>)
 }

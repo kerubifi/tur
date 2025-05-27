@@ -1,5 +1,5 @@
-import logo from '../images/openfaas-dark.svg'
-import filter from '../images/iconfilter.png'
+import logo from '../images/Logo.svg'
+import filter from '../images/Menu.svg'
 import { Link } from 'react-router-dom'
 import { Filter } from './Filter.tsx'
 import { memo, useState } from 'react'
@@ -25,48 +25,52 @@ export const Header = memo(({ searchParams, handleChangeFilters }: SearchParamsT
     const handleOpen = () => {
         setOpenFilter(!openFilter)
     }
-
     const fav = user?.favorite!.reduce((acc: number) => acc + 1, 0)
     const car = user?.cartTurnirs!.reduce((acc: number) => acc + 1, 0)
     return (
         <>
-            <Drawer open={openFilter} placement='left' onClose={() => setOpenFilter(false)}>
+            <Drawer className='FilterDrawer' open={openFilter} placement='left' onClose={() => setOpenFilter(false)} width={270}>
                 <Filter handleChangeFilters={handleChangeFilters} searchParams={searchParams} />
             </Drawer >
             <div className='header'>
                 <Link to="/">
                     <div>
-                        <img src={logo} alt="logo" width={30} />
+                        <img src={logo} alt="logo" width={80} />
                     </div>
-                </Link>
-                <div className='filtermenu'>
-                    {searchParams.get('game') || searchParams.get('_order') ? <div className='filternum' /> : ''}
+                </Link><div className='InputFlex'>
+                    <div className='filtermenu'>
+                        {searchParams.get('game') || searchParams.get('_order') ? <div className='filternum' /> : ''}
 
-                    <button onClick={handleOpen}>
-                        <img src={filter} alt="filter" width={20} />
-                    </button>
+                        <div onClick={handleOpen}>
+                            <img src={filter} alt="filter" width={20} />
+                        </div>
+                    </div>
+                    <Input placeholder='Поиск' className='HeaderInput' rootClassName='HeaderInput' onChange={debouncedHandler} defaultValue={searchParams.get('name') || ''} />
                 </div>
-                <Input onChange={debouncedHandler} defaultValue={searchParams.get('name') || ''} />
-                <Link to="cartturnirs">
-                    <button>tur</button>
-                    {car && <div className='iconquantity'>{car}</div>}
-                </Link>
-                <Link to="/favorite">
-                    <div><img src={require('../images/iconStar.png')} alt='izbranoe' width={25} /></div>
-                    {fav && <div className='iconquantity'>{fav}</div>}
-                </Link>
-                <div onClick={!user ? () => setOpenModal(true) : () => setOpenMenu(!OpenMenu)}><img src={require('../images/user.png')} alt='izbranoe' width={25} /></div>
+                <div className='HeaderRight'>
+                    <div className='HeaderButton'>
+                        <Link className='headeartextbutton' to="cartturnirs">
+                            <div>Турниры</div>
+                            {car > 0 && <div className='iconquantity'>{car}</div>}
+                        </Link>
+                        <div>|</div>
+                        <Link className='headeartextbutton' to="/favorite">
+                            <div>Избраное</div>
+                            {fav > 0 && <div className='iconquantity'>{fav}</div>}
+                        </Link>
+                    </div>
+                    <button className='SignIn' onClick={!user ? () => setOpenModal(true) : () => setOpenMenu(!OpenMenu)}>Вход</button>
+                </div>
                 <Modal destroyOnHidden footer={null} onCancel={closeModal} open={OpenModal}><Login closeModal={closeModal} /></Modal>
-                <Drawer width={180} open={OpenMenu} placement='right' onClose={() => setOpenMenu(false)}>
+                <Drawer className='UserDrawer' width={180} open={OpenMenu} placement='right' onClose={() => setOpenMenu(false)}>
                     <Link to="/addturnir">
-                        <span>+</span>
+                        <div>Мои турниры</div>
                     </Link>
-                    <span onClick={() => { localStorage.removeItem('user'); window.location.reload() }}>exit</span>
-                    <Link to={`/userprofile/${user.id}`}>
-                        <span>profil</span>
-                    </Link>
-                    {user && user.role ? <Link to="/admin"><span>admin</span></Link> : ""}
-                    {/* <span onClick={() => console.log(JSON.parse(localStorage.getItem('user')!))}>ok</span> */}
+                    {user ? <Link to={`/userprofile/${user.id}`}>
+                        <div>Профиль</div>
+                    </Link> : ''}
+                    {user && user.role ? <Link to="/admin"><div>admin</div></Link> : ""}
+                    <div onClick={() => { localStorage.removeItem('user'); window.location.reload() }}>Выход</div>
                 </Drawer >
 
             </div>

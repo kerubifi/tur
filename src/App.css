@@ -1,40 +1,91 @@
-.header{
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: grey;
-    height: 50px;
-    color: #fff;
-    align-items: center;
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-.cardsbox{
+
+.main,
+.favorite,
+.Turnir,
+.Profile,
+.Admin,
+.AddTurnir,
+.Cart {
+    background-image: url(./images/488598f9-6aca-4f29-8d85-1c6a3281a47c.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 700px;
+}
+
+.Profile{
+    padding-top: 10px;
+}
+
+.favorite,
+.Cart .p {
+    color: rgba(255, 255, 255, 1);
+}
+
+.cardsbox {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-.cards{
-    width: 200px;
-    box-shadow: 4px 4px 4px 4px grey;
+
+.cards {
+    position: relative;
+    background-color: rgba(17, 25, 40, 0.788);
+    width: 320px;
+    height: 210px;
+    border: 1px, rgba(245, 175, 25, 1), solid;
+    border-radius: 6px;
     margin: 20px;
-    padding: 5px;
+    padding: 10px;
+    color: rgba(255, 255, 255, 1);
 }
-.activeCart{
-    background-color: aquamarine;
+
+.cards .link {
+    color: rgba(255, 255, 255, 1);
 }
+
+.noactiveCart {
+    position: relative;
+    font-size: medium;
+    padding: 4px 22px;
+    color: rgba(17, 25, 40, 1);
+    background: linear-gradient(90deg, rgba(245, 175, 25, 1), rgba(241, 39, 17, 1));
+    border-radius: 3px;
+    top: 10px;
+    right: -165px;
+}
+
+.activeCart {
+    position: relative;
+    font-size: medium;
+    padding: 4px 22px;
+    color: rgb(154, 154, 154);
+    background: rgba(17, 25, 40, 0.788);
+    border: 1px, rgb(154, 154, 154), solid;
+    border-radius: 3px;
+    top: 10px;
+    right: -165px;
+}
+
 .link {
     text-decoration: none;
     color: black;
 }
 
-.filter div{
-    margin: 5px;
-}
-
-.filter div:hover, .active{
-    background-color: darkgray;
-}
-
-.izflex{
+.izflex {
     display: flex;
-    justify-content: space-between;
+}
+
+.FavoriteIcon {
+    position: absolute;
+    top: 7px;
+    right: 10px;
+}
+
+.CartIcon {
+    position: absolute;
 }

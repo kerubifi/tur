@@ -15,13 +15,14 @@ export const Filter = ({ handleChangeFilters, searchParams }: SearchParamsType) 
 
     return (<div className='filter'>
         <Sort handleChangeFilters={handleChangeFilters} searchParams={searchParams} />
-        {games.map((e) => (
-            <FilterCard
-                key={e.id}
-                handleChangeFilters={handleChangeFilters}
-                searchParams={searchParams}
-                game={e} />
-        ))}
-
+        <div className="filterflex">
+            {games.map((e) => (
+                <FilterCard
+                    key={e.id}
+                    handleChangeFilters={handleChangeFilters}
+                    searchParams={searchParams}
+                    game={e} />
+            ))}
+        </div>
     </div>)
 }

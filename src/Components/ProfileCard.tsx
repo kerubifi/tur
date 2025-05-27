@@ -26,7 +26,7 @@ export const UserCard = memo(({ user }: Props) => {
             case 1:
                 newuser = { ...user, login: values.login }
                 dispatch(fetchUsersProfile(user.id!))
-                newprofile = { ...userProfile, login: values.login }
+                newprofile = { ...user, login: values.login }
                 dispatch(ChangeUserProfile(newprofile))
                 break;
             case 2:

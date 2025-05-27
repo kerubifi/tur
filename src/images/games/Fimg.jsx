@@ -23,6 +23,6 @@ export const Fimg = ({ game }) => {
             break;
     }
     return (
-        <img src={sr} alt={game} width={30} />
+        <img src={sr} alt={game} width={35} />
     )
 }

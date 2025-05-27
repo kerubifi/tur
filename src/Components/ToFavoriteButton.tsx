@@ -24,8 +24,8 @@ export const ToFavoriteButton = ({ turnir }: { turnir: Turnirtype }) => {
     }
 
     return (
-        <div>
-            {favoriteIds && <div ><img onClick={ChangeFavourites} src={favoriteIds.includes(turnir.id) ? require('../images/iconStar.png') : require('../images/iconEmptyStar.png')} alt='izbranoe' width={10} /></div>}
+        <div className='FavoriteIcon'>
+            {favoriteIds && <div><img onClick={ChangeFavourites} src={favoriteIds.includes(turnir.id) ? require('../images/iconStar.png') : require('../images/iconEmptyStar.png')} alt='izbranoe' width={15} /></div>}
         </div>
     )
 }

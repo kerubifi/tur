@@ -4,7 +4,7 @@ export const CartTurnirs = () => {
     const user = JSON.parse(localStorage.getItem('user')!)
 
     return (
-        <div>
+        <div className="Cart">
             <div className='cardsbox'>
                 {user?.cartTurnirs!.length ?
                     user.cartTurnirs.map((el) => (
@@ -13,7 +13,7 @@ export const CartTurnirs = () => {
                             turnir={el}
                         />
 
-                    )) : <p>no</p>}
+                    )) : <p>Тут пока ничего нет</p>}
             </div>
         </div>
     )

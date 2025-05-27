@@ -2,12 +2,13 @@ import { useAppSelector } from "../../reduxHooks.ts"
 import { Card } from "../../Components/Card.tsx"
 import { Pagination } from "antd"
 import { SearchParamsType } from "../../types/Types.ts"
+import './main.css'
 
 export const Main = ({ handleChangeFilters, searchParams }: SearchParamsType) => {
   const turnirs = useAppSelector((state) => state.turnirs.turnirs)
 
   return (
-    <div>
+    <div className="main">
       <div className='cardsbox'>
         {turnirs.map((turnir) => (
           <Card

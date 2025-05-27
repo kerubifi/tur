@@ -12,10 +12,19 @@ export const fetchUsers = createAsyncThunk<UserDataType[]>(
     }
 )
 
-export const fetchUsersProfile = createAsyncThunk<UserProfileType, UserDataType>(
+export const fetchOneUser = createAsyncThunk<UserDataType, number>(
+    'user/fetchOneUser',
+    async (id, thunkAPI) => {
+        const response = await fetch(`http://localhost:5000/usersData?id=${id}`)
+        const result = await response.json()
+        return result
+    }
+)
+
+export const fetchUsersProfile = createAsyncThunk<UserProfileType, number>(
     'user/fetchUsersProfile',
-    async (user, thunkAPI) => {
-        const response = await fetch(`http://localhost:5000/users?id=${user.id}`)
+    async (id, thunkAPI) => {
+        const response = await fetch(`http://localhost:5000/users?id=${id}`)
         const result = await response.json()
         return result
     }
@@ -51,12 +60,14 @@ export const ChangeUserProfile = createAsyncThunk<void, UserProfileType, { dispa
 
 type initialStateType = {
     userData: UserDataType[]
+    oneUser: UserDataType | null
     userProfile: UserProfileType | null
 
 }
 
 const initialState: initialStateType = {
     userData: [],
+    oneUser: null,
     userProfile: null
 }
 
@@ -67,6 +78,10 @@ export const turnirSlice = createSlice({
         builder.addCase(fetchUsers.fulfilled, (state, action) => {
             const data = action.payload
             state.userData = data
+        })
+        builder.addCase(fetchOneUser.fulfilled, (state, action) => {
+            const data = action.payload[0]
+            state.oneUser = data
         })
         builder.addCase(fetchUsersProfile.fulfilled, (state, action) => {
             const data = action.payload[0]
