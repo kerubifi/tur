@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../reduxHooks.ts"
 import { useEffect } from "react"
 import { fetchOneUser, fetchUsersProfile } from "../Admin/admin.ts"
+import { Card } from "../../Components/Card.tsx"
+import './profile.css'
 
 export const Profile = () => {
     const { id } = useParams()
@@ -14,19 +16,35 @@ export const Profile = () => {
         if (id) { dispatch(fetchUsersProfile(Number(id))) }
     }, [id])
 
-    useEffect(() => {
-        if (user && user.login === userProfile?.login) {
-            dispatch(fetchOneUser(user.id))
-        }
-    }, [userProfile])
     return (
         <div className="Profile">
-            <div>{userProfile?.login}</div>
-            {user && user.login === userProfile?.login ? <div>
-                <div>{oneUser?.password}</div>
-                <div>{oneUser?.mail}</div>
-                {user.role ? <div>{user.role}</div> : ''}
-            </div> : <div>{userProfile?.login}</div>}
+            <div className="minProfile">
+                <div className="User info">
+                    <h3>{userProfile?.login}</h3>
+                </div>
+                <p>пользователь участвует</p>
+                <div className="parTurnir , cardsbox">
+                    {userProfile?.cartTurnirs!.length ?
+                        userProfile.cartTurnirs.map((el) => (
+                            <Card
+                                key={el.id}
+                                turnir={el}
+                            />
+
+                        )) : <p>Тут пока ничего нет</p>}
+                </div>
+                <p>Турниры пользователя</p>
+                <div className="UserTurnir , cardsbox">
+                    {userProfile?.userTurnir!.length ?
+                        userProfile.userTurnir.map((el) => (
+                            <Card
+                                key={el.id}
+                                turnir={el}
+                            />
+
+                        )) : <p>Тут пока ничего нет</p>}
+                </div>
+            </div>
         </div>
     )
 }

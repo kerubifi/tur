@@ -1,0 +1,34 @@
+.minProfile {
+    width: 70%;
+    margin: auto;
+    border: 1px, rgba(245, 175, 25, 1), solid;
+    border-radius: 6px;
+    background-color: rgba(17, 25, 40, 1);
+    color: rgba(255, 255, 255, 1);
+}
+
+.parTurnir {
+    border: 1px, rgb(154, 154, 154), solid;
+    border-radius: 3px;
+    margin: auto;
+    margin-top: 2px;
+    width: 95%;
+}
+
+.UserTurnir {
+    border: 1px, rgb(154, 154, 154), solid;
+    border-radius: 3px;
+    margin: auto;
+    margin-top: 2px;
+    width: 95%;
+}
+
+.noactiveCart {
+    top: 5px;
+    right: -1px;
+}
+
+.activeCart {
+    top: 5px;
+    right: -1px;
+}

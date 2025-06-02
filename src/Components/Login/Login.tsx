@@ -41,49 +41,50 @@ export const Login = ({ closeModal }: { closeModal: () => void }) => {
                 </>
             ) : (
                 <>
-                    <Form onFinish={handleFinish}>
+                    <Form onFinish={handleFinish} layout="vertical">
                         <h2>{error}</h2>
-                        <Form.Item name="login" rules={[{ required: true, min: 5 }]}>
-                            <Input placeholder="Login" />
+                        <Form.Item className="LoginInputMargin" name="login" label="Логин" rules={[{ required: true, message: 'Пожалуйста, ввидете логин', }, { min: 5, message: 'Логин должени содержать не менее 5 символов', }]}>
+                            <Input className="LoginInput" placeholder="Например: Anton456" />
                         </Form.Item>
-                        <Form.Item name="password" rules={[{ required: true, min: 8 }]}>
-                            <Input.Password placeholder="Password" />
+                        <Form.Item className="LoginInputMargin" name="password" label="Пароль" rules={[{ required: true, message: 'Пожалуйста, ввидете Пароль', }, { min: 8, message: 'Пароль должени содержать не менее 8 символов', }]}>
+                            <Input.Password className="LoginInput" placeholder="Пароль" />
                         </Form.Item>
                         {Openregistration && (
                             <>
-                                <Form.Item name="password2" rules={[
+                                <Form.Item className="LoginInputMargin" name="password2" label="Подтвердите пароль" rules={[
                                     {
                                         required: true,
-                                        message: 'Please confirm your password!',
+                                        message: 'Пожалуйста, Подтвердите Пароль',
                                     },
                                     ({ getFieldValue }) => ({
                                         validator(_, value) {
                                             if (!value || getFieldValue('password') === value) {
                                                 return Promise.resolve();
                                             }
-                                            return Promise.reject(new Error('The new password that you entered do not match!'));
+                                            return Promise.reject(new Error('Пароли не совпадают'));
                                         },
                                     }),
                                 ]}>
-                                    <Input.Password placeholder="Password2" />
+                                    <Input.Password className="LoginInput" placeholder="Подтвердите пароль" />
                                 </Form.Item>
-                                <Form.Item name="mail" rules={[
+                                <Form.Item className="LoginInputMargin" name="mail" label="Электронная почта" rules={[
                                     {
                                         type: 'email',
-                                        message: 'The input is not valid E-mail!',
+                                        message: 'Пожалуйста, ввидете адрес электронной почты',
                                     },
                                     {
                                         required: true,
-                                        message: 'Please input your E-mail!',
                                     },
                                 ]}>
-                                    <Input placeholder="mail" />
+                                    <Input className="LoginInput" placeholder="Например: 123@mail.ru" />
                                 </Form.Item>
                             </>
                         )}
-                        <Button htmlType="submit">{Openregistration ? "reg" : "sign"}</Button>
+                        <div className="LogButtons">
+                            <Button className="LoginButton" htmlType="submit">{Openregistration ? "Зарегестрироватся" : "Вход"}</Button>
+                            {!Openregistration && <><span className="lt"> | </span><Button className="RegButton" onClick={() => { setOpenregistration(true) }} type="primary">Регистрация</Button></>}
+                        </div>
                     </Form>
-                    {!Openregistration && <Button onClick={() => { setOpenregistration(true) }} type="primary">reg</Button>}
                 </>
             )}
         </div>

@@ -14,10 +14,11 @@
     background-image: url(./images/488598f9-6aca-4f29-8d85-1c6a3281a47c.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 700px;
+    height: 100vh;
+    overflow: auto;
 }
 
-.Profile{
+.Profile {
     padding-top: 10px;
 }
 
@@ -42,6 +43,32 @@
     margin: 20px;
     padding: 10px;
     color: rgba(255, 255, 255, 1);
+}
+
+.cards:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.addtur:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.addtur {
+    text-align: center;
+    position: relative;
+    background-color: rgba(17, 25, 40, 0.688);
+    width: 120px;
+    height: 120px;
+    border: 1px, rgba(245, 175, 25, 0.9), solid;
+    border-radius: 6px;
+    margin: 20px;
+    margin-top: 60px;
+    padding: 10px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.addtur img {
+    margin-top: 30px;
 }
 
 .cards .link {
@@ -69,6 +96,12 @@
     border-radius: 3px;
     top: 10px;
     right: -165px;
+}
+
+.exityes{
+    color: rgba(255, 255, 255, 1);
+    margin-bottom: 3px;
+    display: block;
 }
 
 .link {

@@ -36,22 +36,8 @@ export const RegistrationProfile = createAsyncThunk<UserProfileType, UserProfile
     }
 )
 
-export const ChangeFavorite = createAsyncThunk<void, UserType, { dispatch: AppDispatch }>(
-    'user/ChangeFavorite',
-    async (turnirs, { dispatch }) => {
-        await fetch(`http://localhost:5000/users/${turnirs.id}`, {
-            method: "PUT",
-            body: JSON.stringify(turnirs),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        dispatch(UpdateUserProfile(turnirs.id!))
-    }
-)
-
-export const ChangeCart = createAsyncThunk<void, UserType, { dispatch: AppDispatch }>(
-    'user/ChangeCart',
+export const ChangeUser = createAsyncThunk<void, UserType, { dispatch: AppDispatch }>(
+    'user/ChangeUser',
     async (turnirs, { dispatch }) => {
         await fetch(`http://localhost:5000/users/${turnirs.id}`, {
             method: "PUT",

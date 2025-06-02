@@ -8,6 +8,10 @@
     align-items: center;
 }
 
+.lt {
+    color: rgba(255, 255, 255, 1);
+}
+
 .InputFlex {
     width: 280px;
     display: flex;
@@ -31,6 +35,33 @@
     position: relative;
     text-decoration: none;
     color: rgba(255, 255, 255, 1);
+}
+
+.LoginButton,
+.JoinButton {
+    font-size: medium;
+    padding: 4px 22px;
+    color: rgba(17, 25, 40, 1);
+    background: linear-gradient(90deg, rgba(245, 175, 25, 1), rgba(241, 39, 17, 1));
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.RegButton {
+    font-size: medium;
+    padding: 4px 22px;
+    color: rgb(154, 154, 154);
+    background: rgba(17, 25, 40, 0.788);
+    border: 1px, rgb(154, 154, 154), solid;
+    border-radius: 3px;
+    margin-left: 5px;
+}
+
+.LogButtons {
+    display: flex;
+    justify-content: space-around;
+    width: 240px;
+    margin: auto;
 }
 
 .SignIn {
@@ -79,7 +110,30 @@
 }
 
 :where(.css-dev-only-do-not-override-1m2bkf9).ant-drawer .ant-drawer-content {
-    background-color: rgba(17, 25, 40, 0.9);
+    background-color: rgba(17, 25, 40, 1);
+    justify-content: center;
+}
+
+.UserDrawer a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+}
+
+.UserDrawer div {
+    cursor: pointer;
+}
+
+.LoginInput {
+    background-color: rgba(214, 216, 222, 0.4);
+    color: rgba(0, 0, 0, 0.9);
+    border: 10px, rgba(255, 255, 255, 1);
+    margin-top: auto;
+    width: 340px;
+    height: 27px;
+}
+
+.LoginInputMargin {
+    margin-left: 15%;
 }
 
 .filter {
@@ -114,7 +168,48 @@
     color: rgba(255, 255, 255, 1);
     text-decoration: none;
 }
-.UserDrawer .link .div{
+
+.UserDrawer .link .div {
     color: rgba(255, 255, 255, 1);
     text-decoration: none;
+}
+
+.ProfileButton {
+    font-size: medium;
+    background: rgba(17, 25, 40, 0.788);
+}
+
+:where(.css-dev-only-do-not-override-1m2bkf9).ant-modal .ant-modal-content {
+    background: rgb(17, 25, 40);
+}
+
+:where(.css-dev-only-do-not-override-1m2bkf9).ant-form-item .ant-form-item-label>label {
+    color: rgba(255, 255, 255, 1);
+}
+
+:where(.css-dev-only-do-not-override-1m2bkf9).ant-form-item .ant-form-item-label>label.ant-form-item-required::before {
+    color: rgba(245, 175, 25, 1);
+}
+
+.anticon {
+    color: rgba(255, 255, 255, 1);
+}
+
+:where(.css-dev-only-do-not-override-1m2bkf9).ant-pagination .ant-pagination-item a {
+    color: rgba(255, 255, 255, 1);
+}
+
+
+
+:where(.css-dev-only-do-not-override-1m2bkf9).ant-pagination .ant-pagination-item-active:hover a {
+    color: rgba(245, 175, 25, 1);
+}
+
+:where(.css-dev-only-do-not-override-1m2bkf9).ant-pagination .ant-pagination-item-active,
+:where(.css-dev-only-do-not-override-1m2bkf9).ant-pagination .ant-pagination-item-active:hover {
+    border-color: rgba(245, 175, 25, 1);
+}
+
+:where(.css-dev-only-do-not-override-1m2bkf9).ant-pagination .ant-pagination-item {
+    background-color: rgba(17, 25, 40, 0.788);
 }

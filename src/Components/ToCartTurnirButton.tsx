@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../reduxHooks.ts"
 import { ParticipantsType, Turnirtype } from "../types/Types.ts"
-import { ChangeCart } from '../Pages/Profile/ProfileSlice.ts'
+import { ChangeUser } from '../Pages/Profile/ProfileSlice.ts'
 import { Button, Form, Input, Modal } from "antd"
 import { useState } from "react"
 import TextArea from "antd/es/input/TextArea"
@@ -28,19 +28,20 @@ export const ToCartTurnirButton = ({ turnir }: { turnir: Turnirtype }) => {
                 dispatch(ChangeParticipants(newParticipants))
                 const t = user.cartTurnirs.filter(e => e.id !== turnir.id)
                 const newUserData = { ...user, cartTurnirs: t }
-                dispatch(ChangeCart(newUserData))
+                dispatch(ChangeUser(newUserData))
             }
             else {
                 values.login = user.login
                 values.id = user.id
                 let p = [values]
                 turnir.participants!.map(x => p = [...p, x])
-                const newParticipants = { ...turnir, participants: [values] }
+                const newParticipants = { ...turnir, participants: p }
+                console.log(newParticipants)
                 dispatch(ChangeParticipants(newParticipants))
                 let t = [turnir]
                 user?.cartTurnirs?.map(x => t = [...t, x])
                 const newUserData = { ...user, cartTurnirs: t }
-                dispatch(ChangeCart(newUserData))
+                dispatch(ChangeUser(newUserData))
             }
             setOpenModal(false)
             form.resetFields()
@@ -60,14 +61,14 @@ export const ToCartTurnirButton = ({ turnir }: { turnir: Turnirtype }) => {
             {cartTurnirsIds && <button onClick={() => Modals()} className={cartTurnirsIds && cartTurnirsIds.includes(turnir.id) ? 'activeCart' : 'noactiveCart'}>Участвовать</button>}
             <Modal destroyOnHidden footer={null} onCancel={closeModal} open={OpenModal}>
                 <Form onFinish={ChangeCartTurnirs}>
-                    <Form.Item name='Nickname' label="Nickname" hidden={variants} >
-                        <Input />
+                    <Form.Item name='Nickname' label="Ник в игре" hidden={variants} rules={!variants ? [{ required: true }] : []} >
+                        <Input placeholder="Например: Amton456" />
                     </Form.Item>
-                    <Form.Item name='comment' label="comment" hidden={variants}>
-                        <TextArea rows={2} />
+                    <Form.Item name='comment' label="Коментарий" hidden={variants}>
+                        <TextArea rows={2} placeholder="Комментарий" />
                     </Form.Item>
-                    {variants ? <span>ok?</span> : ""}
-                    <Button htmlType="submit" >add</Button>
+                    {variants ? <span className="exityes">Вы точно хотите отменить участие?</span> : ""}
+                    {variants ? <Button className="JoinButton" htmlType="submit" >Да</Button> : <Button className="JoinButton" htmlType="submit" >Присоединиться</Button>}
                 </Form>
             </Modal>
         </div>

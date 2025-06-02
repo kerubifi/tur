@@ -1,0 +1,120 @@
+.minTurnir {
+    width: 70%;
+    margin: auto;
+    display: flex;
+}
+
+.TurnirData {
+    width: 85%;
+    padding: auto;
+    border: 1px, rgba(245, 175, 25, 1), solid;
+    border-radius: 6px;
+    background-color: rgba(17, 25, 40, 1);
+}
+
+.TurnirInfo {
+    color: rgba(255, 255, 255, 1);
+}
+
+.TurnirComment {
+    margin-top: 60px;
+    border: 1px, rgba(245, 175, 25, 1), solid;
+    border-radius: 6px;
+}
+
+.TurnirComment p, .ctext {
+    color: rgba(255, 255, 255, 1);
+}
+
+.TurnirParticipants {
+    color: rgba(255, 255, 255, 1);
+    width: 15%;
+    margin-left: 10px;
+    border: 1px, rgba(245, 175, 25, 1), solid;
+    border-radius: 6px;
+}
+
+.TurnirParticipants .parm hr {
+    margin-top: 40px;
+    margin-bottom: 10px;
+    background: rgba(245, 175, 25, 1);
+}
+
+.CardParticipants {
+    background-color: rgba(17, 25, 40, 1);
+    border: 1px, rgb(154, 154, 154), solid;
+    border-radius: 3px;
+    margin: auto;
+    margin-top: 2px;
+    width: 95%;
+}
+
+.CardParticipants .com {
+    color: rgb(150, 150, 150);
+    font-size: medium;
+}
+
+.CardParticipants a {
+    font-size: larger;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+}
+
+.noactiveCart {
+    top: 0px;
+    right: -1px;
+}
+
+.activeCart {
+    top: 0px;
+    right: -1px;
+}
+
+.ComFavoriteIcon {
+    position: relative;
+    margin-left: 96%;
+    margin-top: 2px;
+}
+
+.ComFavoriteIcon img {
+    width: 30px;
+}
+
+.comments {
+    background-color: rgba(17, 25, 40, 1);
+    border: 1px, rgb(154, 154, 154), solid;
+    border-radius: 3px;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 95%;
+    color: rgba(255, 255, 255, 1);
+}
+
+.comminus{
+    margin-top: -50px;
+}
+
+.comdate {
+    font-size:xx-small;
+    color: rgb(66, 66, 66);
+}
+
+.CommInput {
+    position: relative;
+    background-color: rgba(214, 216, 222, 0.4);
+    color: rgba(0, 0, 0, 0.9);
+    border: 10px, rgba(255, 255, 255, 1);
+    margin-top: auto;
+    margin-left: 20px;
+    width: 95%;
+    height: 27px;
+}
+
+.CommButonn{
+    background-color: rgba(214, 216, 222, 0);
+    width: 35px;
+    position: absolute;
+    top: -66px;
+    right: 30px;
+}

@@ -14,6 +14,7 @@ import { Admin } from './Pages/Admin/Admin.tsx';
 
 
 function App() {
+  const user = JSON.parse(localStorage.getItem('user')!)
 
   let [searchParams, setSearchParams] = useSearchParams()
 

@@ -3,12 +3,12 @@ import { useEffect } from "react"
 import { addComments, fetchComments } from "../TurnirSlice.ts"
 import { useAppDispatch, useAppSelector } from "../../../reduxHooks.ts"
 
-type CommentForm ={
+type CommentForm = {
     username: string
     text: string
 }
 
-export const TurnirComents = ({ turnirId }: {turnirId: number}) => {
+export const TurnirComents = ({ turnirId }: { turnirId: number }) => {
     const comments = useAppSelector(state => state.turnir.comments)
     const user = JSON.parse(localStorage.getItem('user')!)
 
@@ -19,26 +19,32 @@ export const TurnirComents = ({ turnirId }: {turnirId: number}) => {
     }, [turnirId])
 
     const handleFinish = (values: CommentForm) => {
-        const date = new Date().toLocaleString()
-        dispatch(addComments({ ...values, turnirId, date }))
+        if (user) {
+            const date = new Date().toLocaleString()
+            dispatch(addComments({ ...values, turnirId, date }))
+        }
+        else {
+
+        }
     }
 
     return (
         <div>
+            {!user ? <div className="ctext">Гость не может оставлять коментарии</div> : ''}
             <Form onFinish={handleFinish}>
                 <Form.Item name="UserName" hidden initialValue={user?.login}></Form.Item>
                 <Form.Item name="text">
-                    <Input.TextArea placeholder="comment" />
+                    <Input.TextArea className="CommInput" placeholder="comment" />
                 </Form.Item>
                 <Form.Item>
-                    <Button type="primary" htmlType="submit" >add</Button>
+                    <Button className="CommButonn" type="primary" htmlType="submit" ><img src={require("../../../images/addCom.png")} alt="add" width={35} /></Button>
                 </Form.Item>
             </Form>
-            <div>{comments.map(comment => (
-                <div key={comment.id}>
-                    <span>{comment.UserName}</span>
-                    <span>{comment.date}</span>
-                    <span>{comment.text}</span>
+            <div className="comminus">{comments.map(comment => (
+                <div className="comments" key={comment.id}>
+                    <h4>{comment.UserName}</h4>
+                    <p className="comdate">{comment.date}</p>
+                    <p>{comment.text}</p>
                 </div>
             ))}</div>
         </div>

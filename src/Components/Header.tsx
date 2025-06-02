@@ -40,12 +40,11 @@ export const Header = memo(({ searchParams, handleChangeFilters }: SearchParamsT
                 </Link><div className='InputFlex'>
                     <div className='filtermenu'>
                         {searchParams.get('game') || searchParams.get('_order') ? <div className='filternum' /> : ''}
-
                         <div onClick={handleOpen}>
                             <img src={filter} alt="filter" width={20} />
                         </div>
                     </div>
-                    <Input placeholder='Поиск' className='HeaderInput' rootClassName='HeaderInput' onChange={debouncedHandler} defaultValue={searchParams.get('name') || ''} />
+                    <Input placeholder='Поиск' className='HeaderInput' onChange={debouncedHandler} defaultValue={searchParams.get('name') || ''} />
                 </div>
                 <div className='HeaderRight'>
                     <div className='HeaderButton'>
@@ -59,7 +58,8 @@ export const Header = memo(({ searchParams, handleChangeFilters }: SearchParamsT
                             {fav > 0 && <div className='iconquantity'>{fav}</div>}
                         </Link>
                     </div>
-                    <button className='SignIn' onClick={!user ? () => setOpenModal(true) : () => setOpenMenu(!OpenMenu)}>Вход</button>
+                    {user ? <img className='ProfileButton' onClick={() => setOpenMenu(!OpenMenu)} src={require('../images/iconAvatar.png')} alt='Avatar' width={30} /> :
+                        <button className='SignIn' onClick={() => setOpenModal(true)}>Вход</button>}
                 </div>
                 <Modal destroyOnHidden footer={null} onCancel={closeModal} open={OpenModal}><Login closeModal={closeModal} /></Modal>
                 <Drawer className='UserDrawer' width={180} open={OpenMenu} placement='right' onClose={() => setOpenMenu(false)}>

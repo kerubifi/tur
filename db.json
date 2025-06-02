@@ -8,13 +8,7 @@
       "peopleInGroupe": "5",
       "comment": "Aram",
       "creator": "kerubifi",
-      "participants": [
-        {
-          "Nickname": "keru",
-          "login": "kerubifi",
-          "id": 1
-        }
-      ],
+      "participants": [],
       "id": 2
     },
     {
@@ -36,7 +30,13 @@
       "peopleInGroupe": "3",
       "comment": "3vs3",
       "creator": "kerubifi",
-      "participants": [],
+      "participants": [
+        {
+          "Nickname": "keru",
+          "login": "12345",
+          "id": 2
+        }
+      ],
       "id": 4
     },
     {
@@ -49,10 +49,10 @@
       "creator": "kerubifi",
       "participants": [
         {
-          "Nickname": "ger",
-          "comment": "solo",
-          "login": "12345",
-          "id": 2
+          "Nickname": "f",
+          "comment": "f",
+          "login": "kerubifi",
+          "id": 1
         }
       ],
       "id": 5
@@ -67,6 +67,77 @@
       "creator": "kerubifi",
       "participants": [],
       "id": 6
+    },
+    {
+      "game": "LoL",
+      "date": "Wed, 07 May 2025 01:00:00 GMT",
+      "prize": "5000",
+      "groupse": "6",
+      "peopleInGroupe": "5",
+      "comment": "cool",
+      "creator": "12345",
+      "participants": [],
+      "id": 7
+    },
+    {
+      "game": "CS-GO",
+      "date": "Wed, 14 May 2025 23:00:00 GMT",
+      "prize": "4",
+      "groupse": "4",
+      "peopleInGroupe": "4",
+      "creator": "12345",
+      "participants": [],
+      "id": 8
+    },
+    {
+      "game": "LoL",
+      "date": "Wed, 11 Jun 2025 02:00:00 GMT",
+      "prize": "800",
+      "groupse": "4",
+      "peopleInGroupe": "1",
+      "comment": "1vs1",
+      "creator": "kerubifi",
+      "participants": [],
+      "id": 9
+    },
+    {
+      "game": "Valorant",
+      "date": "Tue, 17 Jun 2025 02:00:00 GMT",
+      "prize": "500",
+      "groupse": "4",
+      "peopleInGroupe": "5",
+      "comment": "Test",
+      "creator": "kerubifi",
+      "participants": [],
+      "id": 10
+    },
+    {
+      "game": "Dota2",
+      "date": "Tue, 10 Jun 2025 01:00:00 GMT",
+      "prize": "100",
+      "groupse": "6",
+      "peopleInGroupe": "4",
+      "comment": "dota",
+      "creator": "kerubifi",
+      "participants": [],
+      "id": 11
+    },
+    {
+      "game": "Dota2",
+      "date": "Wed, 25 Jun 2025 05:00:00 GMT",
+      "prize": "2000",
+      "groupse": "4",
+      "peopleInGroupe": "3",
+      "comment": "3vs3",
+      "creator": "kerubifi",
+      "participants": [],
+      "id": 12
+    }
+  ],
+  "turnirkol": [
+    {
+      "num": 11,
+      "id": 1
     }
   ],
   "usersData": [
@@ -87,37 +158,18 @@
   ],
   "comments": [
     {
-      "UserName": "keru",
-      "text": "ok\n",
-      "turnirId": 3,
-      "date": "25.05.2025, 19:53:11",
+      "UserName": "kerubifi",
+      "text": "hi",
+      "turnirId": 4,
+      "date": "02.06.2025, 12:20:36",
       "id": 1
     },
     {
       "UserName": "kerubifi",
       "text": "ok",
-      "turnirId": 5,
-      "date": "25.05.2025, 19:57:03",
+      "turnirId": 4,
+      "date": "02.06.2025, 12:25:48",
       "id": 2
-    },
-    {
-      "text": "gg",
-      "turnirId": 4,
-      "date": "26.05.2025, 14:04:49",
-      "id": 3
-    },
-    {
-      "text": "gg",
-      "turnirId": 4,
-      "date": "26.05.2025, 14:05:17",
-      "id": 4
-    },
-    {
-      "UserName": "kerubifi",
-      "text": "lol",
-      "turnirId": 6,
-      "date": "27.05.2025, 07:03:48",
-      "id": 5
     }
   ],
   "users": [
@@ -132,7 +184,13 @@
           "peopleInGroupe": "3",
           "comment": "3vs3",
           "creator": "kerubifi",
-          "participants": [],
+          "participants": [
+            {
+              "Nickname": "keru",
+              "login": "12345",
+              "id": 2
+            }
+          ],
           "id": 4
         },
         {
@@ -150,24 +208,93 @@
       "cartTurnirs": [
         {
           "game": "LoL",
-          "date": "Fri, 30 May 2025 15:00:00 GMT",
-          "prize": "8000",
+          "date": "Wed, 07 May 2025 00:06:00 GMT",
+          "prize": "5000",
           "groupse": "8",
           "peopleInGroupe": "5",
-          "comment": "Aram",
+          "comment": "norm",
           "creator": "kerubifi",
           "participants": [],
-          "id": 2
+          "id": 5
         }
       ],
       "turnirs": [],
-      "userTurnir": [],
+      "userTurnir": [
+        {
+          "game": "Dota2",
+          "date": "Wed, 25 Jun 2025 05:00:00 GMT",
+          "prize": "2000",
+          "groupse": "4",
+          "peopleInGroupe": "3",
+          "comment": "3vs3",
+          "creator": "kerubifi",
+          "participants": []
+        },
+        {
+          "game": "Dota2",
+          "date": "Tue, 10 Jun 2025 01:00:00 GMT",
+          "prize": "100",
+          "groupse": "6",
+          "peopleInGroupe": "4",
+          "comment": "dota",
+          "creator": "kerubifi",
+          "participants": []
+        },
+        {
+          "game": "Valorant",
+          "date": "Tue, 17 Jun 2025 02:00:00 GMT",
+          "prize": "500",
+          "groupse": "4",
+          "peopleInGroupe": "5",
+          "comment": "Test",
+          "creator": "kerubifi",
+          "participants": []
+        },
+        {
+          "game": "LoL",
+          "date": "Wed, 11 Jun 2025 02:00:00 GMT",
+          "prize": "800",
+          "groupse": "4",
+          "peopleInGroupe": "1",
+          "comment": "1vs1",
+          "creator": "kerubifi",
+          "participants": []
+        }
+      ],
       "role": "1",
       "id": 1
     },
     {
       "login": "12345",
       "favorite": [
+        {
+          "game": "CS-GO",
+          "date": "Fri, 30 May 2025 15:00:00 GMT",
+          "prize": "8000",
+          "groupse": "8",
+          "peopleInGroupe": "1",
+          "comment": "1vs1",
+          "creator": "kerubifi",
+          "participants": [],
+          "id": 3
+        },
+        {
+          "game": "LoL",
+          "date": "Fri, 30 May 2025 15:00:00 GMT",
+          "prize": "8000",
+          "groupse": "8",
+          "peopleInGroupe": "5",
+          "comment": "Aram",
+          "creator": "kerubifi",
+          "participants": [
+            {
+              "Nickname": "keru",
+              "login": "kerubifi",
+              "id": 1
+            }
+          ],
+          "id": 2
+        },
         {
           "game": "Valorant",
           "date": "Sat, 31 May 2025 16:00:00 GMT",
@@ -178,34 +305,50 @@
           "creator": "kerubifi",
           "participants": [],
           "id": 4
-        },
-        {
-          "game": "CS-GO",
-          "date": "Fri, 30 May 2025 15:00:00 GMT",
-          "prize": "8000",
-          "groupse": "8",
-          "peopleInGroupe": "1",
-          "comment": "1vs1",
-          "creator": "kerubifi",
-          "participants": [],
-          "id": 3
         }
       ],
       "cartTurnirs": [
         {
-          "game": "LoL",
-          "date": "Fri, 30 May 2025 15:00:00 GMT",
+          "game": "Valorant",
+          "date": "Sat, 31 May 2025 16:00:00 GMT",
           "prize": "8000",
-          "groupse": "8",
-          "peopleInGroupe": "5",
-          "comment": "Aram",
+          "groupse": "16",
+          "peopleInGroupe": "3",
+          "comment": "3vs3",
           "creator": "kerubifi",
-          "participants": [],
-          "id": 2
+          "participants": [
+            {
+              "Nickname": "g",
+              "comment": "g",
+              "login": "kerubifi",
+              "id": 1
+            }
+          ],
+          "id": 4
         }
       ],
       "turnirs": [],
-      "userTurnir": [],
+      "userTurnir": [
+        {
+          "game": "CS-GO",
+          "date": "Wed, 14 May 2025 23:00:00 GMT",
+          "prize": "4",
+          "groupse": "4",
+          "peopleInGroupe": "4",
+          "creator": "12345",
+          "participants": []
+        },
+        {
+          "game": "LoL",
+          "date": "Wed, 07 May 2025 01:00:00 GMT",
+          "prize": "5000",
+          "groupse": "6",
+          "peopleInGroupe": "5",
+          "comment": "cool",
+          "creator": "12345",
+          "participants": []
+        }
+      ],
       "role": "0",
       "id": 2
     }
@@ -225,6 +368,11 @@
       "game": "CS-GO",
       "maxpeopleInGroupe": 5,
       "id": 3
+    },
+    {
+      "game": "Dota2",
+      "maxpeopleInGroupe": 5,
+      "id": 4
     }
   ]
 }

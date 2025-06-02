@@ -6,6 +6,7 @@ export type Turnirtype = {
     peopleInGroupe: number
     participants?: ParticipantsType[]
     creator: string
+    comment?: string
     id?: number
 }
 
